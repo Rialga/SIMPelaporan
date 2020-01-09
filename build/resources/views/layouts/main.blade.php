@@ -15,6 +15,9 @@
     <link href="assets/vendors/datatables/dataTables.bootstrap.min.css" rel="stylesheet">
     <!-- Core css -->
     <link href="assets/css/app.min.css" rel="stylesheet">
+    <!-- page css -->
+    <link href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -123,6 +126,17 @@
 
 <!-- Core JS -->
 <script src="assets/js/app.min.js"></script>
+
+<!-- page js -->
+<script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script>
+    $('.datepicker-input').datepicker({
+        format: 'yyyy/mm/dd'
+    });
+
+
+</script>
+
 @yield('js')
 </body>
 

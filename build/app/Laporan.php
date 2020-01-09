@@ -9,7 +9,7 @@ class Laporan extends Model
     protected $table = 'laporan';
     protected $primaryKey = 'laporan_no';
     protected $fillable = [
-        'user_nrp' , 'pelapor_nik' , 'laporan_tgllapor' ,'laporan_tgljilang',
+        'laporan_no','user_nrp' , 'pelapor_nik' , 'laporan_tgllapor' ,'laporan_tgljilang',
         'laporan_lokasi' , 'laporan_keterangan' , 'doc_pendukung,id'
     ];
 

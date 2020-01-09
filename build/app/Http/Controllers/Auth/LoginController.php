@@ -28,12 +28,45 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Login username to be used by the controller.
      *
-     * @return void
+     * @var string
+     */
+    protected $nip;
+
+    /**
+     * Create a new controller instance.
      */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+
+        $this->nip = $this->findnip();
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function findnip()
+    {
+        $login = request()->input('login');
+
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'user_nrp';
+
+        request()->merge([$fieldType => $login]);
+
+        return $fieldType;
+    }
+
+    /**
+     * Get username property.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return $this->nip;
     }
 }

@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="" />
+    <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,11 +55,28 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="user: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="LoginTester" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\.idea" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -136,8 +168,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/eplanning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/resources/views/auth" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -148,18 +181,17 @@
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Http" />
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Models" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views\auth" />
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views" />
+    </key>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
       <list>
         <serviceView>
           <treeState>
-            <expand>
-              <path>
-                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
-                <item name="root:@localhost" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </treeState>
         </serviceView>
@@ -184,6 +216,12 @@
       <workItem from="1577979354116" duration="15419000" />
       <workItem from="1578074007363" duration="12258000" />
       <workItem from="1578181403975" duration="16583000" />
+      <workItem from="1578303886244" duration="9328000" />
+      <workItem from="1578324334877" duration="512000" />
+      <workItem from="1578325188502" duration="1974000" />
+      <workItem from="1578417476256" duration="1648000" />
+      <workItem from="1578490757444" duration="7760000" />
+      <workItem from="1578545088169" duration="1650000" />
     </task>
     <servers />
   </component>
@@ -207,10 +245,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578195832027" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1578193451825">
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1578545196755">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578193451825" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578545196755" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -227,10 +265,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="553" y="109" width="264" height="520" key="com.intellij.database.view.ui.DbObjectDialog/0.0.1366.738@0.0.1366.738" timestamp="1578181524780" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1578195913848">
+    <state x="339" y="165" key="run.anything.popup" timestamp="1578310165797">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578195913848" />
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578310165797" />
     <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1577700862673">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

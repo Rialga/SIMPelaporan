@@ -21,13 +21,14 @@ Route::get('logout', function(){
     return redirect('login');
 });
 
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','brigadir']], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['sabara','spkt']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     });
 
 
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt']], function () {
+
         Route::group(['prefix' => 'kelolauser'], function () {
             Route::get('/', function() { return view('kelolauser'); });
             Route::get('data', 'UserController@data');
@@ -37,7 +38,22 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt']], function 
             Route::get('listrole', 'UserController@listrole');
 
         });
+});
+
+
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], function () {
+
+    Route::group(['prefix' => 'kelolapelapor'], function () {
+        Route::get('/', function() { return view('kelolapelapor'); });
+        Route::get('data', 'PelaporController@data');
+        Route::post('create', 'PelaporController@create');
+        Route::post('update/{id}', 'PelaporController@update');
+        Route::get('delete/{id}', 'PelaporController@delete');
+        Route::get('listrole', 'PelaporController@listrole');
+
     });
+});
+
 
 Route::group(['prefix' => 'user'], function () {
     Route::get('/', function() { return view('auth.register'); });
