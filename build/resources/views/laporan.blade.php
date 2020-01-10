@@ -41,7 +41,7 @@
 
         <tr style="text-align: center;">
             <td>
-               <img src="1.png"> <br> <br>
+               <img src={{ asset("assets\images\polri.png") }}> <br> <br>
                <font size="5">
                    <b style="line-height: 0.6cm;">
                        SURAT TANDA BUKTI PENERIMAAN PELAPORAN <br>
@@ -57,7 +57,7 @@
 
                 <font size="5" style="text-align: justify">
                     <p style="text-align: justify">
-                            ----- Yang bertanda tangan di bawah ini menerangkan pada hari Rabu tanggal 28 Agustus 2019 jam 21.20
+                            ----- Yang bertanda tangan di bawah ini menerangkan pada hari Rabu tanggal {{$tgllapor}} jam {{$jamlapor}}
                             Wib telah datang seorang Laki-laki / Perempuan Warga Negara Indonesia melapor ke Polsek Pauh yang mengaku
                             bernama :-------------------------------------------------------------------------------------------------------
                     </p>
@@ -70,7 +70,7 @@
                                 :
                             </td>
                             <td>
-                               SELLI MARIANITA SIMATUPANG
+                                <b> {{$detail->laporan->pelapor->pelapor_nama}} </b>
                             </td>
                         </tr>
                         <tr>
@@ -81,7 +81,7 @@
                                 :
                             </td>
                             <td>
-                                22 Tahun
+                                {{$umur}} Tahun
                             </td>
                         </tr>
                         <tr>
@@ -92,7 +92,7 @@
                                 :
                             </td>
                             <td>
-                                Batak
+                                {{$detail->laporan->pelapor->pelapor_suku}}
                             </td>
                         </tr>
                         <tr>
@@ -103,7 +103,7 @@
                                 :
                             </td>
                             <td>
-                                Mahasiswa
+                                {{$detail->laporan->pelapor->pelapor_pekerjaan}}
                             </td>
                         </tr>
                         <tr>
@@ -114,7 +114,7 @@
                                 :
                             </td>
                             <td width="500px">
-                                Jl.Tapa GG Almaksum perdamean selatan kab. Lebahanbatu Sumut
+                                {{$detail->laporan->pelapor->pelapor_alamat}}
                             </td>
                         </tr>
 
@@ -130,15 +130,20 @@
                 <font size="5">
                   Telah melaporkan kehilangan surat penting berupa : <br><br>
                 <table >
+
+                    @foreach($detail2 as $data)
                     <tr>
-                        <td width="20px"></td>
+                        <td width="20px">
+                        <b> - </b>
+                        </td>
                         <td width="500px">
-                            <b> - 1 (satu) buah Kartu ATM Bank Mandiri</b>
+                            <b> {{ $data["detail_laporan_ket"] }}</b>
                         </td>
                         <td>
-                            <b>An.pelpaor </b>
+                            <b> a.n {{ $data["nama_pemilik"] }} </b>
                         </td>
                     </tr>
+                        @endforeach
                 </table>
                 </font>
             </td>
@@ -157,7 +162,7 @@
                                 Hari / Tanggal
                             </td>
                             <td>
-                                : 29 Agustus 2019
+                                : {{ $dayhilang }}/{{$tglhilang}}
                             </td>
                         </tr>
                         <tr>
@@ -166,7 +171,7 @@
                                 Di Sekitar
                             </td>
                             <td>
-                               : Pauh Padang
+                               : {{$detail->laporan->laporan_lokasi}}
                             </td>
                         </tr>
                     </table>
@@ -180,8 +185,8 @@
 
                     <p style="text-align: justify">
                         Atas peristiwa tersebut kemudian Pelapor sudah berusaha untuk mencari namun belum ditemukan, kemudian
-                        melporkannya ke Polsek Pauh Padang sesuai dengan Laporan Polisi Nomor : LP / 363 / VIII / 2019 Sektor Pauh,
-                        tanggal 28 Agustus 2019. ----------------------------------------------------------------------
+                        melporkannya ke Polsek Pauh Padang sesuai dengan Laporan Polisi Nomor : {{$detail->laporan->laporan_no}} Sektor Pauh,
+                        tanggal : {{ $tglhilang }}. ----------------------------------------------------------------------
                     </p>
                     <p style="text-align: justify">
                         ----- Demikianlah surat tanda penerimaan laporan / pengaduan yang kehilangan barang - barang surat – surat
@@ -203,18 +208,18 @@
                                 <br><br><br><br><br><br><br>
 
                                 <b><u>
-                                    SELLI MARIANITA SIMATUPANG
+                                        {{$detail->laporan->pelapor->pelapor_nama}}
                                 </u></b>
                             </td>
                             <td width="350px"></td>
                             <td>
-                                Padang, 28 Agustus 2019 <br><br>
+                                Padang, {{ $tgllapor }} <br><br>
                                 <b>a.n. KEPALA RESOR SEKTOR PAUH</b> <br>
                                 <b>BA SPK “B”</b>
                                 <br><br><br><br><br>
-                                <b>RISKHAN . M</b> <br>
+                                <b>{{ Auth::user()->user_nama }}</b> <br>
                                 <b>____________________</b><br>
-                                <b>AIPDA NRP 80030895</b>
+                                <b>{{ Auth::user()->user_pangkat }} {{ Auth::user()->user_nrp }}</b>
                             </td>
                         </tr>
                     </table>
@@ -229,7 +234,7 @@
 </body>
 
 <script>
-    window.onload = function() { window.print(); }
+    // window.onload = function() { window.print(); }
 </script>
 
 </html>

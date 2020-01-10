@@ -23,6 +23,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item dropdown open">
+                    <a class="dropdown-toggle" href="{{ url('kelolalaporan') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-team"></i>
+                                </span>
+                        <span class="title">Kelola Laporan</span>
+                    </a>
+                </li>
+
            @else
                 <li class="nav-item dropdown open">
                     <a class="dropdown-toggle" href="{{ url('kelolapelapor') }}">
@@ -30,6 +39,14 @@
                                     <i class="anticon anticon-team"></i>
                                 </span>
                         <span class="title">Data Pelapor</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown open">
+                    <a class="dropdown-toggle" href="{{ url('kelolalaporan') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-team"></i>
+                                </span>
+                        <span class="title">Kelola Laporan</span>
                     </a>
                 </li>
            @endif

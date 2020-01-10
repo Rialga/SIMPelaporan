@@ -52,6 +52,23 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
         Route::get('listrole', 'PelaporController@listrole');
 
     });
+
+    Route::group(['prefix' => 'kelolalaporan'], function () {
+        Route::get('/', function() { return view('kelolalaporan'); });
+
+        Route::get('addlaporan/{id}', 'KelolalaporanController@addlaporan');
+        Route::get('listjenis', 'KelolalaporanController@listjenis');
+
+        Route::get('data', 'KelolalaporanController@data');
+        Route::post('create', 'KelolalaporanController@create');
+        Route::post('update/{id}', 'KelolalaporanController@update');
+        Route::get('delete/{id}', 'KelolalaporanController@delete');
+
+        Route::get('print/{id}', 'KelolalaporanController@print');
+
+    });
+
+
 });
 
 

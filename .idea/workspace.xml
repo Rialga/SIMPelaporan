@@ -2,17 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/DetailLaporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DetailLaporan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Pelapor.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Pelapor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/routes/web.php" afterDir="false" />
@@ -54,6 +52,13 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="pelapor: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -170,20 +175,20 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/resources/views/auth" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/ppid" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views\auth" />
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app" />
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Http" />
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Models" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views\auth" />
-      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -221,7 +226,8 @@
       <workItem from="1578325188502" duration="1974000" />
       <workItem from="1578417476256" duration="1648000" />
       <workItem from="1578490757444" duration="7760000" />
-      <workItem from="1578545088169" duration="1650000" />
+      <workItem from="1578545088169" duration="6424000" />
+      <workItem from="1578611112637" duration="28479000" />
     </task>
     <servers />
   </component>
@@ -241,14 +247,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1577640537689" />
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578195832027">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578560801098">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578195832027" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1578545196755">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578560801098" />
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1578612286903">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578545196755" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578612286903" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -269,9 +275,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578310165797" />
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1577700862673">
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578562120974">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1577700862673" />
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1578562120974" />
   </component>
 </project>

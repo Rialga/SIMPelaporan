@@ -18,6 +18,7 @@
             <table id="tpelapor" class="table">
                 <thead>
                 <tr>
+                    <th></th>
                     <th>NIK</th>
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
@@ -189,6 +190,13 @@
             $('#tpelapor').dataTable({
                 "ajax": "{{ url('/kelolapelapor/data') }}",
                 "columns": [
+                    {
+                        data: 'pelapor_nik',
+                        sClass: 'text-right',
+                        render: function(data) {
+                            return'<a href="#" data-id="'+data+'" id="addlaporan" class="text-danger" title="tambah laporan"><i class="anticon anticon-plus-circle"></i> </a>';
+                        }
+                    },
                     { "data": "pelapor_nik" },
                     { "data": "pelapor_nama" },
                     { "data": "pelapor_jekel"},
@@ -206,7 +214,7 @@
                 ],
                 columnDefs: [
                     {
-                        width: "150px",
+                        width: "10px",
                         targets: [0]
                     },
                     {
@@ -228,6 +236,10 @@
                     {
                         width: "100px",
                         targets: [5]
+                    },
+                    {
+                        width: "100px",
+                        targets: [6]
                     },
                 ],
                 scrollX: true,
@@ -267,15 +279,21 @@
         });
 
         $(document).on('click', '#edit', function() {
-            var data = $('#tuser').DataTable().row($(this).parents('tr')).data();
+            var data = $('#pelapor').DataTable().row($(this).parents('tr')).data();
             $('#muser').modal('show');
             document.getElementById('div_password').style.display = 'none';
             $('#nrp').val(data.user_nrp).change();
             $('#nama').val(data.user_nama).change();
             $('#pangkat').val(data.user_pangkat).change();
             $('#role').val(data.role_id).change();
-            $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.user_nrp);
+            $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.pelapor_nik);
         });
+
+        $(document).on('click', '#addlaporan', function() {
+            var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
+            window.location.href = '{{ url('kelolalaporan/addlaporan') }}/'+data.pelapor_nik ;
+        });
+
 
         $(document).on('click', '#detail', function() {
             var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();

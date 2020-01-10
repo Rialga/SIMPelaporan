@@ -9,15 +9,15 @@ class DetailLaporan extends Model
     protected $table = 'detail_laporan';
     protected $primaryKey = 'detail_laporan_id';
     protected $fillable = [
-        'laporan_no' , 'jenis_id' , 'detail_laporan_ket'
+        'laporan_no' , 'jenis_id' , 'nama_pemilik','detail_laporan_ket'
     ];
 
 
-    public function laproan() {
+    public function laporan() {
         return $this->belongsTo('App\Laporan', 'laporan_no', 'laporan_no');
     }
 
     public function jenis() {
-        return $this->belongsTo('App\Laporan', 'jenis_id', 'jenis_id');
+        return $this->belongsTo('App\Jenis', 'jenis_id', 'jenis_id');
     }
 }
