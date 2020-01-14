@@ -47,7 +47,10 @@ class KelolalaporanController extends Controller
 
         $detaillaporan->save();
 
-        return view('laporan');
+        $id = $request->laporan_no;
+        return $this->print($id);
+
+
     }
 
     public function data()
@@ -55,6 +58,7 @@ class KelolalaporanController extends Controller
         $detail_laporan = DetailLaporan::with(['laporan','jenis'])->get();
         return DataTables::of($detail_laporan)->toJson();
     }
+
 
     public function print($id)
     {

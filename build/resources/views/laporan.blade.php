@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+    @media print {
+        #printPageButton {
+            display: none;
+        }
+    }
+</style>
+
 <head>
     <title>Cetak Surat Kehilangan</title>
 </head>
 
+<a id="printPageButton" href="{{ url('kelolalaporan/') }}">Back</a>
+<button id="printPageButton" onClick="window.print();">Print</button>
 
 <body>
     <table  class="table" width="1050px" align="center">
@@ -234,7 +245,7 @@
 </body>
 
 <script>
-    // window.onload = function() { window.print(); }
+    window.onload = function() { window.print(); }
 </script>
 
 </html>
