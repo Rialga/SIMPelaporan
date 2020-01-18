@@ -12,6 +12,7 @@ class Laporan extends Model
         'laporan_no','user_nrp' , 'pelapor_nik' , 'laporan_tgllapor' ,'laporan_tglhilang',
         'laporan_lokasi' , 'laporan_keterangan'
     ];
+    public $incrementing = false;
 
     public function user() {
         return $this->belongsTo('App\User', 'user_nrp', 'uer_nrp');

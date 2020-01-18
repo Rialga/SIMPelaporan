@@ -4,7 +4,12 @@
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/laporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +171,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/eplanning" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -219,7 +224,8 @@
       <workItem from="1578490757444" duration="7760000" />
       <workItem from="1578545088169" duration="6424000" />
       <workItem from="1578611112637" duration="29146000" />
-      <workItem from="1578986459342" duration="2570000" />
+      <workItem from="1578986459342" duration="3763000" />
+      <workItem from="1579354635357" duration="4856000" />
     </task>
     <servers />
   </component>
@@ -243,10 +249,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578560801098" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1578612286903">
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1579358322274">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1578612286903" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1579358322274" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -185,149 +185,160 @@
     <script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
 
     <script type="text/javascript">
-
-        function loadData() {
-            $('#tpelapor').dataTable({
-                "ajax": "{{ url('/kelolapelapor/data') }}",
-                "columns": [
-                    {
-                        data: 'pelapor_nik',
-                        sClass: 'text-right',
-                        render: function(data) {
-                            return'<a href="#" data-id="'+data+'" id="addlaporan" class="text-danger" title="tambah laporan"><i class="anticon anticon-plus-circle"></i> </a>';
-                        }
-                    },
-                    { "data": "pelapor_nik" },
-                    { "data": "pelapor_nama" },
-                    { "data": "pelapor_jekel"},
-                    { "data": "pelapor_pekerjaan"},
-                    { "data": "pelapor_notelp"},
-                    {
-                        data: 'pelapor_nik',
-                        sClass: 'text-right',
-                        render: function(data) {
-                            return'<a href="#" data-id="'+data+'" id="detail" class="text-info" title="detail"><i class="anticon anticon-eye"></i></i> </a> &nbsp;'+
-                                '<a href="#" data-id="'+data+'" id="edit" class="text-warning" title="edit"><i class="anticon anticon-edit"></i> </a> &nbsp;'+
-                                '<a href="#" data-id="'+data+'" id="delete" class="text-danger" title="hapus"><i class="anticon anticon-delete"></i> </a>';
-                        }
-                    }
-                ],
-                columnDefs: [
-                    {
-                        width: "10px",
-                        targets: [0]
-                    },
-                    {
-                        width: "150px",
-                        targets: [1]
-                    },
-                    {
-                        width: "150px",
-                        targets: [2]
-                    },
-                    {
-                        width: "100px",
-                        targets: [3]
-                    },
-                    {
-                        width: "100px",
-                        targets: [4]
-                    },
-                    {
-                        width: "100px",
-                        targets: [5]
-                    },
-                    {
-                        width: "100px",
-                        targets: [6]
-                    },
-                ],
-                scrollX: true,
-                scrollY: '350px',
-                scrollCollapse: true,
-            });
-        } loadData();
-
-
-        $(document).on('click', '#addpelapor', function() {
-            $('#mpelapor').modal('show');
-            $('#formpelapor').attr('action', '{{ url('kelolapelapor/create') }}');
-        });
-
-        $('#formpelapor').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action')+'?_token='+'{{ csrf_token() }}',
-                type: 'post',
-                data: {
-                    'pelapor_nik': $('#pelapor_nik').val(),
-                    'pelapor_nama': $('#pelapor_nama').val(),
-                    'pelapor_tgl_lahir': $('#pelapor_tgl_lahir').val(),
-                    'pelapor_jekel': $('#pelapor_jekel').val(),
-                    'pelapor_alamat': $('#pelapor_alamat').val(),
-                    'pelapor_pekerjaan': $('#pelapor_pekerjaan').val(),
-                    'pelapor_notelp': $('#pelapor_notelp').val(),
-                    'pelapor_suku': $('#pelapor_suku').val(),
-                },
-                success :function () {
-
-                    $('#tpelapor').DataTable().destroy();
-                    loadData();
-                    $('#mpelapor').modal('hide');
+        $(document).ready(function() {
+            $.extend( $.fn.dataTable.defaults, {
+                autoWidth: false,
+                language: {
+                    search: '<span>Cari:</span> _INPUT_',
+                    searchPlaceholder: 'Cari...',
+                    lengthMenu: '<span>Tampil:</span> _MENU_',
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
                 }
             });
-        });
 
-        $(document).on('click', '#edit', function() {
-            var data = $('#pelapor').DataTable().row($(this).parents('tr')).data();
-            $('#muser').modal('show');
-            document.getElementById('div_password').style.display = 'none';
-            $('#nrp').val(data.user_nrp).change();
-            $('#nama').val(data.user_nama).change();
-            $('#pangkat').val(data.user_pangkat).change();
-            $('#role').val(data.role_id).change();
-            $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.pelapor_nik);
-        });
+                function loadData() {
+                    $('#tpelapor').dataTable({
+                        "ajax": "{{ url('/kelolapelapor/data') }}",
+                        "columns": [
+                            {
+                                data: 'pelapor_nik',
+                                sClass: 'text-right',
+                                render: function(data) {
+                                    return'<a href="#" data-id="'+data+'" id="addlaporan" class="text-danger" title="tambah laporan"><i class="anticon anticon-plus-circle"></i> </a>';
+                                }
+                            },
+                            { "data": "pelapor_nik" },
+                            { "data": "pelapor_nama" },
+                            { "data": "pelapor_jekel"},
+                            { "data": "pelapor_pekerjaan"},
+                            { "data": "pelapor_notelp"},
+                            {
+                                data: 'pelapor_nik',
+                                sClass: 'text-right',
+                                render: function(data) {
+                                    return'<a href="#" data-id="'+data+'" id="detail" class="text-info" title="detail"><i class="anticon anticon-eye"></i></i> </a> &nbsp;'+
+                                        '<a href="#" data-id="'+data+'" id="edit" class="text-warning" title="edit"><i class="anticon anticon-edit"></i> </a> &nbsp;'+
+                                        '<a href="#" data-id="'+data+'" id="delete" class="text-danger" title="hapus"><i class="anticon anticon-delete"></i> </a>';
+                                }
+                            }
+                        ],
+                        columnDefs: [
+                            {
+                                width: "10px",
+                                targets: [0]
+                            },
+                            {
+                                width: "150px",
+                                targets: [1]
+                            },
+                            {
+                                width: "150px",
+                                targets: [2]
+                            },
+                            {
+                                width: "100px",
+                                targets: [3]
+                            },
+                            {
+                                width: "100px",
+                                targets: [4]
+                            },
+                            {
+                                width: "100px",
+                                targets: [5]
+                            },
+                            {
+                                width: "100px",
+                                targets: [6]
+                            },
+                        ],
+                        scrollX: true,
+                        scrollY: '350px',
+                        scrollCollapse: true,
+                    });
+                } loadData();
 
-        $(document).on('click', '#addlaporan', function() {
-            var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
-            window.location.href = '{{ url('kelolalaporan/addlaporan') }}/'+data.pelapor_nik ;
-        });
+
+                $(document).on('click', '#addpelapor', function() {
+                    $('#mpelapor').modal('show');
+                    $('#formpelapor').attr('action', '{{ url('kelolapelapor/create') }}');
+                });
+
+                $('#formpelapor').submit(function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: $(this).attr('action')+'?_token='+'{{ csrf_token() }}',
+                        type: 'post',
+                        data: {
+                            'pelapor_nik': $('#pelapor_nik').val(),
+                            'pelapor_nama': $('#pelapor_nama').val(),
+                            'pelapor_tgl_lahir': $('#pelapor_tgl_lahir').val(),
+                            'pelapor_jekel': $('#pelapor_jekel').val(),
+                            'pelapor_alamat': $('#pelapor_alamat').val(),
+                            'pelapor_pekerjaan': $('#pelapor_pekerjaan').val(),
+                            'pelapor_notelp': $('#pelapor_notelp').val(),
+                            'pelapor_suku': $('#pelapor_suku').val(),
+                        },
+                        success :function () {
+
+                            $('#tpelapor').DataTable().destroy();
+                            loadData();
+                            $('#mpelapor').modal('hide');
+                        }
+                    });
+                });
+
+                $(document).on('click', '#edit', function() {
+                    var data = $('#pelapor').DataTable().row($(this).parents('tr')).data();
+                    $('#muser').modal('show');
+                    document.getElementById('div_password').style.display = 'none';
+                    $('#nrp').val(data.user_nrp).change();
+                    $('#nama').val(data.user_nama).change();
+                    $('#pangkat').val(data.user_pangkat).change();
+                    $('#role').val(data.role_id).change();
+                    $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.pelapor_nik);
+                });
+
+                $(document).on('click', '#addlaporan', function() {
+                    var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
+                    window.location.href = '{{ url('kelolalaporan/addlaporan') }}/'+data.pelapor_nik ;
+                });
 
 
-        $(document).on('click', '#detail', function() {
-            var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
-            $('#mdpelapor').modal('show');
-            $('#dnik').text(data.pelapor_nik);
-            $('#dnama').text(data.pelapor_nama);
-            $('#dalamat').text(data.pelapor_alamat);
-            $('#dpekerjaan').text(data.pelapor_pekerjaan);
-            $('#dsuku').text(data.pelapor_suku);
-        });
+                $(document).on('click', '#detail', function() {
+                    var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
+                    $('#mdpelapor').modal('show');
+                    $('#dnik').text(data.pelapor_nik);
+                    $('#dnama').text(data.pelapor_nama);
+                    $('#dalamat').text(data.pelapor_alamat);
+                    $('#dpekerjaan').text(data.pelapor_pekerjaan);
+                    $('#dsuku').text(data.pelapor_suku);
+                });
 
-        $(document).on('click', '#delete', function() {
-            var id = $(this).data('id');
-            if (confirm("Yakin ingin menghapus data?")){
-                $.ajax({
-                    url : "{{ url('kelolapelapor/delete') }}/"+id,
+                $(document).on('click', '#delete', function() {
+                    var id = $(this).data('id');
+                    if (confirm("Yakin ingin menghapus data?")){
+                        $.ajax({
+                            url : "{{ url('kelolapelapor/delete') }}/"+id,
 
-                    success :function () {
+                            success :function () {
 
-                        $('#tpelapor').DataTable().destroy();
-                        loadData();
+                                $('#tpelapor').DataTable().destroy();
+                                loadData();
 
 
+                            }
+                        })
                     }
-                })
-            }
-        });
+                });
 
 
 
 
 
-        $('#mpelapor').on('hidden.bs.modal', function () {
-            $(this).find('form').trigger('reset');
+                $('#mpelapor').on('hidden.bs.modal', function () {
+                    $(this).find('form').trigger('reset');
+                });
         });
 
     </script>

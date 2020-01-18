@@ -158,128 +158,138 @@
     <script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
 
     <script type="text/javascript">
-
-        function loadData() {
-            $('#tuser').dataTable({
-                "ajax": "{{ url('/kelolauser/data') }}",
-                "columns": [
-                    { "data": "user_nama" },
-                    { "data": "user_pangkat" },
-                    { "data": "role.role_name"},
-                    {
-                        data: 'user_nrp',
-                        sClass: 'text-right',
-                        render: function(data) {
-                            return'<a href="#" data-id="'+data+'" id="detail" class="text-info" title="detail"><i class="anticon anticon-eye"></i></i> </a> &nbsp;'+
-                                '<a href="#" data-id="'+data+'" id="edit" class="text-warning" title="edit"><i class="anticon anticon-edit"></i> </a> &nbsp;'+
-                                '<a href="#" data-id="'+data+'" id="delete" class="text-danger" title="hapus"><i class="anticon anticon-delete"></i> </a>';
-                        }
-                    }
-                ],
-                columnDefs: [
-                    {
-                        width: "250px",
-                        targets: [0]
-                    },
-                    {
-                        width: "200px",
-                        targets: [1]
-                    },
-                    {
-                        width: "200px",
-                        targets: [2]
-                    },
-                    {
-                        width: "150px",
-                        targets: [3]
-                    },
-                ],
-                scrollX: true,
-                scrollY: '350px',
-                scrollCollapse: true,
-            });
-        } loadData();
-
-
-        $(document).on('click', '#adduser', function() {
-            $('#muser').modal('show');
-            document.getElementById('div_password').style.display = 'block';
-            $('#formuser').attr('action', '{{ url('kelolauser/create') }}');
-        });
-
-        $('#formuser').submit(function(e) {
-            e.preventDefault();
-            $.ajax({
-                url: $(this).attr('action')+'?_token='+'{{ csrf_token() }}',
-                type: 'post',
-                data: {
-                    'user_nrp': $('#nrp').val(),
-                    'user_nama': $('#nama').val(),
-                    'role_id': $('#role').val(),
-                    'user_pangkat': $('#pangkat').val(),
-                    'password': $('#password').val(),
-                },
-                success :function () {
-
-                    $('#tuser').DataTable().destroy();
-                    loadData();
-                    $('#muser').modal('hide');
+        $(document).ready(function() {
+            $.extend( $.fn.dataTable.defaults, {
+                autoWidth: false,
+                language: {
+                    search: '<span>Cari:</span> _INPUT_',
+                    searchPlaceholder: 'Cari...',
+                    lengthMenu: '<span>Tampil:</span> _MENU_',
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
                 }
             });
-        });
+            function loadData() {
+                $('#tuser').dataTable({
+                    "ajax": "{{ url('/kelolauser/data') }}",
+                    "columns": [
+                        { "data": "user_nama" },
+                        { "data": "user_pangkat" },
+                        { "data": "role.role_name"},
+                        {
+                            data: 'user_nrp',
+                            sClass: 'text-right',
+                            render: function(data) {
+                                return'<a href="#" data-id="'+data+'" id="detail" class="text-info" title="detail"><i class="anticon anticon-eye"></i></i> </a> &nbsp;'+
+                                    '<a href="#" data-id="'+data+'" id="edit" class="text-warning" title="edit"><i class="anticon anticon-edit"></i> </a> &nbsp;'+
+                                    '<a href="#" data-id="'+data+'" id="delete" class="text-danger" title="hapus"><i class="anticon anticon-delete"></i> </a>';
+                            }
+                        }
+                    ],
+                    columnDefs: [
+                        {
+                            width: "250px",
+                            targets: [0]
+                        },
+                        {
+                            width: "200px",
+                            targets: [1]
+                        },
+                        {
+                            width: "200px",
+                            targets: [2]
+                        },
+                        {
+                            width: "150px",
+                            targets: [3]
+                        },
+                    ],
+                    scrollX: true,
+                    scrollY: '350px',
+                    scrollCollapse: true,
+                });
+            } loadData();
 
-        $(document).on('click', '#edit', function() {
-            var data = $('#tuser').DataTable().row($(this).parents('tr')).data();
-            $('#muser').modal('show');
-            document.getElementById('div_password').style.display = 'none';
-            $('#nrp').val(data.user_nrp).change();
-            $('#nama').val(data.user_nama).change();
-            $('#pangkat').val(data.user_pangkat).change();
-            $('#role').val(data.role_id).change();
-            $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.user_nrp);
-        });
 
-        $(document).on('click', '#detail', function() {
-            var data = $('#tuser').DataTable().row($(this).parents('tr')).data();
-            $('#mduser').modal('show');
-            $('#dnrp').text(data.user_nrp);
-            $('#dnama').text(data.user_nama);
-            $('#dpangkat').text(data.user_pangkat);
-            $('#drole').text(data.role.role_name);
-        });
+            $(document).on('click', '#adduser', function() {
+                $('#muser').modal('show');
+                document.getElementById('div_password').style.display = 'block';
+                $('#formuser').attr('action', '{{ url('kelolauser/create') }}');
+            });
 
-        $(document).on('click', '#delete', function() {
-            var id = $(this).data('id');
-            if (confirm("Yakin ingin menghapus data?")){
+            $('#formuser').submit(function(e) {
+                e.preventDefault();
                 $.ajax({
-                    url : "{{ url('kelolauser/delete') }}/"+id,
-
+                    url: $(this).attr('action')+'?_token='+'{{ csrf_token() }}',
+                    type: 'post',
+                    data: {
+                        'user_nrp': $('#nrp').val(),
+                        'user_nama': $('#nama').val(),
+                        'role_id': $('#role').val(),
+                        'user_pangkat': $('#pangkat').val(),
+                        'password': $('#password').val(),
+                    },
                     success :function () {
 
                         $('#tuser').DataTable().destroy();
                         loadData();
-
-
+                        $('#muser').modal('hide');
                     }
-                })
-            }
-        });
+                });
+            });
+
+            $(document).on('click', '#edit', function() {
+                var data = $('#tuser').DataTable().row($(this).parents('tr')).data();
+                $('#muser').modal('show');
+                document.getElementById('div_password').style.display = 'none';
+                $('#nrp').val(data.user_nrp).change();
+                $('#nama').val(data.user_nama).change();
+                $('#pangkat').val(data.user_pangkat).change();
+                $('#role').val(data.role_id).change();
+                $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.user_nrp);
+            });
+
+            $(document).on('click', '#detail', function() {
+                var data = $('#tuser').DataTable().row($(this).parents('tr')).data();
+                $('#mduser').modal('show');
+                $('#dnrp').text(data.user_nrp);
+                $('#dnama').text(data.user_nama);
+                $('#dpangkat').text(data.user_pangkat);
+                $('#drole').text(data.role.role_name);
+            });
+
+            $(document).on('click', '#delete', function() {
+                var id = $(this).data('id');
+                if (confirm("Yakin ingin menghapus data?")){
+                    $.ajax({
+                        url : "{{ url('kelolauser/delete') }}/"+id,
+
+                        success :function () {
+
+                            $('#tuser').DataTable().destroy();
+                            loadData();
 
 
-        $.ajax({
-            url: '{{ url('user/listrole') }}',
-            dataType: "json",
-            success: function(data) {
-                var role = jQuery.parseJSON(JSON.stringify(data));
-                $.each(role, function(k, v) {
-                    $('#role').append($('<option>', {value:v.role_id}).text(v.role_name))
-                })
-            }
-        });
+                        }
+                    })
+                }
+            });
 
 
-        $('#muser').on('hidden.bs.modal', function () {
-            $(this).find('form').trigger('reset');
+            $.ajax({
+                url: '{{ url('user/listrole') }}',
+                dataType: "json",
+                success: function(data) {
+                    var role = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(role, function(k, v) {
+                        $('#role').append($('<option>', {value:v.role_id}).text(v.role_name))
+                    })
+                }
+            });
+
+
+            $('#muser').on('hidden.bs.modal', function () {
+                $(this).find('form').trigger('reset');
+            });
         });
 
     </script>

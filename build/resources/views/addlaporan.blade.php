@@ -62,33 +62,66 @@
                 <h5>--------------------------------------------------</h5>
 
 
-                 <div class="form">
+                <div id="back">
+                    <div  class="form row">
 
-                    <div class="form-group col-md-6">
-                        <label for="jenis_id">Jenis Kehilangan</label>
-                        <select class="form-control" id="jenis_id" name="jenis_id">
-                            <option selected>Pilih Jenis Kehilangan</option>
-                        </select>
+                        <div class="form-group col-md-5">
+                            <label for="jenis_id">Jenis Kehilangan</label>
+                            <select class="form-control jenis" id="jenis_id" name="jenis_id[]">
+                                <option selected>Pilih Jenis Kehilangan</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <label for="nama_pemilik">Atas Nama :</label>
+                            <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" >
+                        </div>
+
+                        <div class="form-group col-md-10">
+                            <label for="detail_laporan_ket">Penjelasan Barang / Surat Berharga :</label>
+                            <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." ></textarea>
+                        </div>
+
+
                     </div>
-
-                     <div class="form-group col-md-6">
-                         <label for="nama_pemilik">Atas Nama :</label>
-                         <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik" placeholder="nama" >
-                     </div>
-
-                     <div class="form-group col-md-6">
-                         <label for="detail_laporan_ket">Penjelasan Barang / Surat Berharga :</label>
-                         <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket" placeholder="..." ></textarea>
-                     </div>
-
-                 </div>
+                </div>
 
                 <div class="modal-footer">
+                    <a id="btnadd" type="button" class="btn btn-default"><i class="anticon anticon-plus"></i> Add</a>
                     <a type="button" class="btn btn-default" data-dismiss="modal" href="{{ url('kelolapelapor/') }}">Kembali</a>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
 
             </form>
+
+            <div style="display: none">
+                <div id="clone" class="form row">
+
+                    <div class="form-group col-md-5">
+                        <label for="jenis_id">Jenis Kehilangan</label>
+                        <select class="form-control jenis" id="jenis_id" name="jenis_id[]">
+                            <option selected>Pilih Jenis Kehilangan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-5">
+                        <label for="nama_pemilik">Atas Nama :</label>
+                        <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" >
+                    </div>
+                    <div class="form-group col-md-2">
+                        <br>
+                        <a id="btndelete" type="button" onclick="$(this).parents('#clone').remove();" class="btn btn-default" ><i class="anticon anticon-minus-circle"></i> Hapus</a>
+                    </div>
+
+                    <div class="form-group col-md-10">
+                        <label for="detail_laporan_ket">Penjelasan Barang / Surat Berharga :</label>
+                        <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." ></textarea>
+                    </div>
+
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -101,39 +134,19 @@
 
     <script type="text/javascript">
 
-
-
-        {{--$('#formlaporan').submit(function(e) {--}}
-        {{--    e.preventDefault();--}}
-        {{--    $.ajax({--}}
-        {{--        url: $(this).attr('action')+'?_token='+'{{ csrf_token() }}',--}}
-        {{--        type: 'post',--}}
-        {{--        data: {--}}
-        {{--            'laporan_no' : $('#laporan_no').val(),--}}
-        {{--            'user_nrp' : $('#user_nrp').val(),--}}
-        {{--            'pelapor_nik' :$('#pelapor_nik').val(),--}}
-        {{--            'laporan_tglhilang' :$('#laporan_tglhilang').val(),--}}
-        {{--            'laporan_lokasi' :$('#laporan_lokasi').val(),--}}
-        {{--            'laporan_keterangan' :$('#laporan_keterangan').val(),--}}
-        {{--            'jenis_id' :$('#jenis_id').val(),--}}
-        {{--            'nama_pemiilik' :$('#nama_pemilik').val(),--}}
-        {{--            'detail_laporan_ket' :$('#detail_laporan_ket').val(),--}}
-        {{--        },--}}
-        {{--        success :function () {--}}
-        {{--        }--}}
-        {{--    });--}}
-        {{--});--}}
-
-
         $.ajax({
             url: '{{ url('kelolalaporan/listjenis') }}',
             dataType: "json",
             success: function(data) {
                 var jenis = jQuery.parseJSON(JSON.stringify(data));
                 $.each(jenis, function(k, v) {
-                    $('#jenis_id').append($('<option>', {value:v.jenis_id}).text(v.jenis_nama))
+                    $('.jenis').append($('<option>', {value:v.jenis_id}).text(v.jenis_nama))
                 })
             }
+        });
+
+        $('#btnadd').click(function() {
+            $('#clone').clone().appendTo('#back');
         });
 
     </script>

@@ -39,13 +39,15 @@ class KelolalaporanController extends Controller
         $laporan->laporan_keterangan =$request->laporan_keterangan;
         $laporan->save();
 
-        $detaillaporan = new DetailLaporan;
-        $detaillaporan->laporan_no = $request->laporan_no;
-        $detaillaporan->jenis_id = $request->jenis_id;
-        $detaillaporan->nama_pemilik = $request->nama_pemilik;
-        $detaillaporan->detail_laporan_ket = $request->detail_laporan_ket;
+        for ($i=0; $i < count($request->jenis_id) ; $i++) {
+            $detaillaporan = new DetailLaporan;
+            $detaillaporan->laporan_no = $request->laporan_no;
+            $detaillaporan->jenis_id = $request->jenis_id[$i];
+            $detaillaporan->nama_pemilik = $request->nama_pemilik[$i];
+            $detaillaporan->detail_laporan_ket = $request->detail_laporan_ket[$i];
 
-        $detaillaporan->save();
+            $detaillaporan->save();
+        }
 
         $id = $request->laporan_no;
         return $this->print($id);
