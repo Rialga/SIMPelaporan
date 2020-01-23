@@ -10,7 +10,7 @@ class Laporan extends Model
     protected $primaryKey = 'laporan_no';
     protected $fillable = [
         'laporan_no','user_nrp' , 'pelapor_nik' , 'laporan_tgllapor' ,'laporan_tglhilang',
-        'laporan_lokasi' , 'laporan_keterangan'
+        'laporan_lokasi' , 'laporan_keterangan', 'doc_pendukung,id'
     ];
     public $incrementing = false;
 
@@ -22,7 +22,9 @@ class Laporan extends Model
         return $this->belongsTo('App\Pelapor', 'pelapor_nik', 'pelapor_nik');
     }
 
-
+    public function doc_pendukung() {
+        return $this->hasOne('App\DocPendukung', 'doc_pendukung_id', 'doc_pendukung_id');
+    }
 
 
 }

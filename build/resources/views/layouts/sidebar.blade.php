@@ -40,6 +40,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item dropdown open">
+                    <a class="dropdown-toggle" href="{{ url('kelolalaporan') }}">
+                                <span class="icon-holder">
+                                            <i class="anticon anticon-file"></i>
+                                </span>
+                        <span class="title">Rabiul</span>
+                    </a>
+                </li>
+
            @else
                 <li class="nav-item dropdown open">
                     <a class="dropdown-toggle" href="{{ url('kelolapelapor') }}">

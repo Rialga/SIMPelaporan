@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Pelapor.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Pelapor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -225,7 +224,8 @@
       <workItem from="1578545088169" duration="6424000" />
       <workItem from="1578611112637" duration="29146000" />
       <workItem from="1578986459342" duration="3763000" />
-      <workItem from="1579354635357" duration="4856000" />
+      <workItem from="1579354635357" duration="12781000" />
+      <workItem from="1579709400887" duration="2609000" />
     </task>
     <servers />
   </component>

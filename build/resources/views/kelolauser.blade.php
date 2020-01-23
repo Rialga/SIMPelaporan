@@ -54,9 +54,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <select class="form-control" id="role" name="role">
-                                    <option selected>Pilih Role</option>
-                                    <option></option>
+                                <select class="select2" id="role" name="role" required>
+                                    <option value=""> Pilih Role </option>
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -275,6 +274,7 @@
             });
 
 
+
             $.ajax({
                 url: '{{ url('user/listrole') }}',
                 dataType: "json",
@@ -290,7 +290,55 @@
             $('#muser').on('hidden.bs.modal', function () {
                 $(this).find('form').trigger('reset');
             });
+
+            $('.select2').select2();
+
+
+
+            $( "#formuser" ).validate({
+                errorElement: 'label',
+                errorClass: 'is-invalid',
+                validClass: 'is-valid',
+                rules: {
+                    nrp: {
+                        required: true
+                    },
+                    nama: {
+                        required: true
+                    },
+                    role: {
+                        required : true
+                    },
+                    pangkat: {
+                        required: true
+                    },
+                    password: {
+                        required: true
+                    }
+
+                },
+                messages : {
+                    nrp: {
+                        required : "Masukan data dengan benar!"
+                    },
+                    nama: {
+                        required : "Masukan data dengan benar!"
+                    },
+                    role: {
+                        required : "Masukan data dengan benar!"
+                    },
+                    pangkat: {
+                        required : "Masukan data dengan benar!"
+                    },
+                    password: {
+                        required : "Masukan data dengan benar!"
+                    }
+                }
+
+            });
+
         });
+
 
     </script>
 @endsection

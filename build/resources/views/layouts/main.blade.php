@@ -13,10 +13,12 @@
 
     <!-- page css -->
     <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset ('assets/vendors/select2/select2.css')}}" rel="stylesheet">
     <!-- Core css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
     <!-- page css -->
     <link href="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+
 
 
 </head>
@@ -128,13 +130,13 @@
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 
 <!-- page js -->
+<script src="{{ asset ('assets/vendors/select2/select2.min.js') }}"></script>
+<script src="{{ asset ('assets/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
 <script>
     $('.datepicker-input').datepicker({
         format: 'yyyy/mm/dd'
     });
-
-
 </script>
 
 @yield('js')

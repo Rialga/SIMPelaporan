@@ -11,10 +11,7 @@ class Pelapor extends Model
     protected $fillable = [
         'pelapor_nik' , 'pelapor_nama' , 'pelapor_tgl_lahir',
         'pelapor_jekel' , 'pelapor_alamat', 'pelapor_pekerjaan',
-        'pelapor_notelp' , 'pelapor_suku', 'doc_pendukung,id'
+        'pelapor_notelp' , 'pelapor_suku'
     ];
     public $incrementing = false;
-    public function doc_pendukung() {
-        return $this->hasOne('App\DocPendukung', 'doc_pendukung_id', 'doc_pendukung_id');
-    }
 }

@@ -63,7 +63,7 @@
 
                             <div class="form-group ">
                                 <label for="pelapor_jekel">Jenis Kelamin</label>
-                                <select class="form-control" id="pelapor_jekel" name="pelapor_jekel">
+                                <select class="select2" id="pelapor_jekel" name="pelapor_jekel">
                                     <option selected>Pilih Jenis Kelamin</option>
                                     <option>Laki-Laki</option>
                                     <option>Perempuan</option>
@@ -334,7 +334,7 @@
 
 
 
-
+            $('.select2').select2();
 
                 $('#mpelapor').on('hidden.bs.modal', function () {
                     $(this).find('form').trigger('reset');
