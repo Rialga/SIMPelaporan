@@ -22,7 +22,7 @@
 
         <div class="card-body">
 
-            <form method="POST" id="formlaporan" action="{{ url('/kelolalaporan/create') }}">
+            <form method="POST" id="formlaporan" action="{{ url('/kelolalaporan/create') }}" enctype="multipart/form-data">
 
                 {{ csrf_field() }}
 
@@ -34,30 +34,38 @@
 
                     <div class="form-group col-md-6">
                         <label for="laproan_no">Nomor Laporan</label>
-                        <input type="text" class="form-control" id="laporan_no" name="laporan_no" placeholder="nomor laporan" >
+                        <input type="text" class="form-control" id="laporan_no" name="laporan_no" placeholder="nomor laporan" required>
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="laporan_tglhilang">Waktu Kejadian :</label>
-                        <input type="text" class="form-control datepicker-input" id="laporan_tglhilang" name="laporan_tglhilang" placeholder="yyyy-mm-dd" >
+                        <input type="text" class="form-control datepicker-input" id="laporan_tglhilang" name="laporan_tglhilang" placeholder="yyyy-mm-dd" required>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="laproan_lokasi">Lokasi Kejadian</label>
-                        <textarea type="text" class="form-control" id="laporan_lokasi" name="laporan_lokasi" placeholder="lokasi kejadian" ></textarea>
+                        <textarea type="text" class="form-control" id="laporan_lokasi" name="laporan_lokasi" placeholder="lokasi kejadian" required></textarea>
                     </div>
 
                     <div class="form-group col-md-6">
                         <label for="laproan_keterangan">Keterangan Laproan</label>
-                        <textarea type="text" class="form-control" id="laporan_keterangan" name="laporan_keterangan" placeholder="keterangan laporan" ></textarea>
+                        <textarea type="text" class="form-control" id="laporan_keterangan" name="laporan_keterangan" placeholder="keterangan laporan" required></textarea>
                     </div>
 
+                    <div class="form-group col-md-3">
+                        <input type="file" class="custom-file-input" id="doc_pendukung_file" name="doc_pendukung_file" required>
+                        <label class="custom-file-label" for="doc_pendukung_file">Choose file</label>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="doc_pendukung_nama" name="doc_pendukung_nama" placeholder="Nama dokumen" required>
+                    </div>
 
                 </div>
 
 
 
-
+                <br>
                 <h5> Keterangan Surat Berharga / Barang yang Hilang</h5>
                 <h5>--------------------------------------------------</h5>
 
@@ -67,19 +75,19 @@
 
                         <div class="form-group col-md-5">
                             <label for="jenis_id">Jenis Kehilangan</label>
-                            <select class="form-control jenis" id="jenis_id" name="jenis_id[]">
-                                <option selected>Pilih Jenis Kehilangan</option>
+                            <select class="form-control jenis" id="jenis_id" name="jenis_id[]" required>
+                                <option value="">Pilih Jenis Kehilangan</option>
                             </select>
                         </div>
 
                         <div class="form-group col-md-5">
                             <label for="nama_pemilik">Atas Nama :</label>
-                            <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" >
+                            <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" required>
                         </div>
 
                         <div class="form-group col-md-10">
                             <label for="detail_laporan_ket">Penjelasan Barang / Surat Berharga :</label>
-                            <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." ></textarea>
+                            <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." required></textarea>
                         </div>
 
 
@@ -99,14 +107,14 @@
 
                     <div class="form-group col-md-5">
                         <label for="jenis_id">Jenis Kehilangan</label>
-                        <select class="form-control jenis" id="jenis_id" name="jenis_id[]">
-                            <option selected>Pilih Jenis Kehilangan</option>
+                        <select class="form-control jenis" id="jenis_id" name="jenis_id[]" required>
+                            <option value="">Pilih Jenis Kehilangan</option>
                         </select>
                     </div>
 
                     <div class="form-group col-md-5">
                         <label for="nama_pemilik">Atas Nama :</label>
-                        <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" >
+                        <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik[]" placeholder="nama" required>
                     </div>
                     <div class="form-group col-md-2">
                         <br>
@@ -115,7 +123,7 @@
 
                     <div class="form-group col-md-10">
                         <label for="detail_laporan_ket">Penjelasan Barang / Surat Berharga :</label>
-                        <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." ></textarea>
+                        <textarea type="text" class="form-control" id="detail_laporan_ket" name="detail_laporan_ket[]" placeholder="..." required></textarea>
                     </div>
 
 

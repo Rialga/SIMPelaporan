@@ -44,7 +44,7 @@
                 <div class="modal-body">
                     <form id="formpelapor">
                         {{ csrf_field() }}
-                        <div class="form-group">
+                        <div class="form-group" id="div_nik">
                             <label for="pelapor_nik">NIK</label>
                             <input type="number" class="form-control" id="pelapor_nik" name="pelapor_nik" placeholder="NIK">
                         </div>
@@ -63,8 +63,8 @@
 
                             <div class="form-group ">
                                 <label for="pelapor_jekel">Jenis Kelamin</label>
-                                <select class="select2" id="pelapor_jekel" name="pelapor_jekel">
-                                    <option selected>Pilih Jenis Kelamin</option>
+                                <select class="form-control" id="pelapor_jekel" name="pelapor_jekel">
+                                    <option value="">Pilih Jenis Kelamin</option>
                                     <option>Laki-Laki</option>
                                     <option>Perempuan</option>
                                 </select>
@@ -188,6 +188,7 @@
         $(document).ready(function() {
             $.extend( $.fn.dataTable.defaults, {
                 autoWidth: false,
+                responsive: true,
                 language: {
                     search: '<span>Cari:</span> _INPUT_',
                     searchPlaceholder: 'Cari...',
@@ -261,6 +262,7 @@
 
                 $(document).on('click', '#addpelapor', function() {
                     $('#mpelapor').modal('show');
+                    document.getElementById('div_nik').style.display = 'block';
                     $('#formpelapor').attr('action', '{{ url('kelolapelapor/create') }}');
                 });
 
@@ -289,14 +291,17 @@
                 });
 
                 $(document).on('click', '#edit', function() {
-                    var data = $('#pelapor').DataTable().row($(this).parents('tr')).data();
-                    $('#muser').modal('show');
-                    document.getElementById('div_password').style.display = 'none';
-                    $('#nrp').val(data.user_nrp).change();
-                    $('#nama').val(data.user_nama).change();
-                    $('#pangkat').val(data.user_pangkat).change();
-                    $('#role').val(data.role_id).change();
-                    $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.pelapor_nik);
+                    var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
+                    $('#mpelapor').modal('show');
+                    document.getElementById('div_nik').style.display = 'none';
+                    $('#pelapor_nama').val(data.pelapor_nama).change();
+                    $('#pelapor_tgl_lahir').val(data.pelapor_tgl_lahir).change();
+                    $('#pelapor_jekel').val(data.pelapor_jekel).change();
+                    $('#pelapor_alamat').val(data.pelapor_alamat).change();
+                    $('#pelapor_pekerjaan').val(data.pelapor_pekerjaan).change();
+                    $('#pelapor_notelp').val(data.pelapor_notelp).change();
+                    $('#pelapor_suku').val(data.pelapor_suku).change();
+                    $('#formpelapor').attr('action', '{{ url('kelolapelapor/update') }}/'+data.pelapor_nik);
                 });
 
                 $(document).on('click', '#addlaporan', function() {
@@ -333,12 +338,80 @@
                 });
 
 
-
-            $('.select2').select2();
-
                 $('#mpelapor').on('hidden.bs.modal', function () {
                     $(this).find('form').trigger('reset');
+
+                    let hapusValidasi = document.getElementById('formpelapor');
+                    hapusValidasi.querySelectorAll('.form-control').forEach(hapusValidasi => {
+                        hapusValidasi.classList.remove('label');
+                        hapusValidasi.classList.remove('is-valid');
+                        hapusValidasi.classList.remove('is-invalid');
+                        hapusValidasi.classList.remove('required');
+                    });
                 });
+
+
+               $("#formpelapor").validate({
+                   errorElement: 'label',
+                   errorClass: 'is-invalid',
+                   validClass: 'is-valid',
+                   rules: {
+                       pelapor_nik: {
+                           required: true
+                       },
+                       pelapor_nama: {
+                           required: true
+                       },
+                       pelapor_tgl_lahir: {
+                           required: true
+                       },
+                       pelapor_jekel: {
+                           required: true
+                       },
+                       pelapor_alamat: {
+                           required: true
+                       },
+                       pelapor_pekerjaan: {
+                           required: true
+                       },
+                       pelapor_notelp: {
+                           required: true
+                       },
+                       pelapor_suku: {
+                           required: true
+                       }
+
+                   },
+                   messages: {
+                       pelapor_nik: {
+                           required: false
+                       },
+                       pelapor_nama: {
+                           required: false
+                       },
+                       pelapor_tgl_lahir: {
+                           required: false
+                       },
+                       pelapor_jekel: {
+                           required: false
+                       },
+                       pelapor_alamat: {
+                           required: false
+                       },
+                       pelapor_pekerjaan: {
+                           required: false
+                       },
+                       pelapor_notelp: {
+                           required: false
+                       },
+                       pelapor_suku: {
+                           required: false
+                       }
+
+                   }
+
+               });
+
         });
 
     </script>

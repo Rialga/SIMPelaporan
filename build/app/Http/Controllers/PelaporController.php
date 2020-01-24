@@ -42,11 +42,15 @@ class PelaporController extends Controller
 
     public function update(Request $request,$id){
 
-        $user = User::where('user_nrp',$id)->first();
-        $user->user_nama = $request->user_nama;
-        $user->user_pangkat = $request->user_pangkat;
-        $user->role_id = $request->role_id;
-        $user->update();
+        $pelapor = Pelapor::where('pelapor_nik',$id)->first();
+        $pelapor->pelapor_nama = $request->pelapor_nama;
+        $pelapor->pelapor_tgl_lahir = $request->pelapor_tgl_lahir;
+        $pelapor->pelapor_jekel = $request->pelapor_jekel;
+        $pelapor->pelapor_alamat = $request->pelapor_alamat;
+        $pelapor->pelapor_pekerjaan = $request->pelapor_pekerjaan;
+        $pelapor->pelapor_notelp = $request->pelapor_notelp;
+        $pelapor->pelapor_suku = $request->pelapor_suku;
+        $pelapor->update();
     }
 
     public function delete($id)

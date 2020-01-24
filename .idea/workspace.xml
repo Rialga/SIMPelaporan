@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Pelapor.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Pelapor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/DocPendukung.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DocPendukung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +49,20 @@
         <item name="@localhost" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="doc_pendukung: table" type="dbc44a63:MariaImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="simpelaporan: schema" type="ebfa3cd1:MariaImplModel$Schema" />
+        <item name="laporan: table" type="dbc44a63:MariaImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
@@ -170,7 +186,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/eplanning" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Perpustakaan" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -225,7 +241,7 @@
       <workItem from="1578611112637" duration="29146000" />
       <workItem from="1578986459342" duration="3763000" />
       <workItem from="1579354635357" duration="12781000" />
-      <workItem from="1579709400887" duration="2609000" />
+      <workItem from="1579709400887" duration="22960000" />
     </task>
     <servers />
   </component>
@@ -241,6 +257,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="28" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1577640962985" />
+    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1579867279404">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1579867279404" />
     <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577640537689">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -249,10 +269,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578560801098" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1579358322274">
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1579868128372">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1579358322274" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1579868128372" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

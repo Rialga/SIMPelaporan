@@ -54,7 +54,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="role">Role</label>
-                                <select class="select2" id="role" name="role" required>
+                                <select class="form-control" id="role" name="role" required>
                                     <option value=""> Pilih Role </option>
                                 </select>
                             </div>
@@ -232,7 +232,8 @@
                         $('#tuser').DataTable().destroy();
                         loadData();
                         $('#muser').modal('hide');
-                    }
+                    },
+
                 });
             });
 
@@ -289,9 +290,14 @@
 
             $('#muser').on('hidden.bs.modal', function () {
                 $(this).find('form').trigger('reset');
+                let hapusValidasi = document.getElementById('formuser');
+                hapusValidasi.querySelectorAll('.form-control').forEach(hapusValidasi => {
+                    hapusValidasi.classList.remove('label');
+                    hapusValidasi.classList.remove('is-valid');
+                    hapusValidasi.classList.remove('is-invalid');
+                    hapusValidasi.classList.remove('required');
+                });
             });
-
-            $('.select2').select2();
 
 
 
@@ -319,19 +325,19 @@
                 },
                 messages : {
                     nrp: {
-                        required : "Masukan data dengan benar!"
+                        required : false
                     },
                     nama: {
-                        required : "Masukan data dengan benar!"
+                        required : false
                     },
                     role: {
-                        required : "Masukan data dengan benar!"
+                        required : false
                     },
                     pangkat: {
-                        required : "Masukan data dengan benar!"
+                        required : false
                     },
                     password: {
-                        required : "Masukan data dengan benar!"
+                        required : false
                     }
                 }
 

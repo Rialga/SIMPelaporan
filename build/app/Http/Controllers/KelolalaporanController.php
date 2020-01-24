@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\DetailLaporan;
+use App\DocPendukung;
 use App\Jenis;
 use App\Laporan;
 use Carbon\Carbon;
@@ -26,20 +27,36 @@ class KelolalaporanController extends Controller
 
     public function create(Request $request){
 
+
+
+        $file = $request->file('doc_pendukung_file');
+        $nama_file = $file->getClientOriginalName();
+
+
+        $tujuan_upload = 'DocumentLaporan';
+        $file->move($tujuan_upload,$nama_file);
+
+        $upload = new DocPendukung;
+        $upload->doc_pendukung_file = $nama_file;
+        $upload->doc_pendukung_nama = $request->doc_pendukung_nama;
+        $upload->save();
+
+
         $now = new DateTime();
 
         $laporan = new Laporan;
         $laporan->pelapor_nik = $request->pelapor_nik;
         $laporan->laporan_no = $request->laporan_no;
         $laporan->laporan_tgllapor = $now;
-        $laporan->user_nrp =$request->user_nrp;
-        $laporan->pelapor_nik =$request->pelapor_nik;
-        $laporan->laporan_tglhilang =$request->laporan_tglhilang;
-        $laporan->laporan_lokasi =$request->laporan_lokasi;
-        $laporan->laporan_keterangan =$request->laporan_keterangan;
+        $laporan->user_nrp = $request->user_nrp;
+        $laporan->doc_pendukung_id  = DocPendukung::all()->last()->doc_pendukung_id;
+        $laporan->pelapor_nik = $request->pelapor_nik;
+        $laporan->laporan_tglhilang = $request->laporan_tglhilang;
+        $laporan->laporan_lokasi = $request->laporan_lokasi;
+        $laporan->laporan_keterangan = $request->laporan_keterangan;
         $laporan->save();
 
-        for ($i=0; $i < count($request->jenis_id) ; $i++) {
+        for ($i = 0; $i < count($request->jenis_id); $i++) {
             $detaillaporan = new DetailLaporan;
             $detaillaporan->laporan_no = $request->laporan_no;
             $detaillaporan->jenis_id = $request->jenis_id[$i];
