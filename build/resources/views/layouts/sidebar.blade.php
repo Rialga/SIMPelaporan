@@ -36,7 +36,16 @@
                                 <span class="icon-holder">
                                     <i class="anticon anticon-file"></i>
                                 </span>
-                        <span class="title">Kelola Laporan</span>
+                        <span class="title">Laporan</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown open">
+                    <a class="dropdown-toggle" href="{{ url('downloadlaporan') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-file"></i>
+                                </span>
+                        <span class="title">Laporan II</span>
                     </a>
                 </li>
 
@@ -54,7 +63,7 @@
                                 <span class="icon-holder">
                                     <i class="anticon anticon-team"></i>
                                 </span>
-                        <span class="title">Kelola Laporan</span>
+                        <span class="title">Laporan</span>
                     </a>
                 </li>
            @endif

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Jan 2020 pada 15.01
+-- Waktu pembuatan: 29 Jan 2020 pada 16.15
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.2
 
@@ -43,7 +43,15 @@ CREATE TABLE `detail_laporan` (
 --
 
 INSERT INTO `detail_laporan` (`detail_laporan_id`, `laporan_no`, `jenis_id`, `nama_pemilik`, `detail_laporan_ket`, `created_at`, `updated_at`) VALUES
-(2, '12', 1, 'Fajar Wirya Putra', 'SIM', '2020-01-10 12:08:28', '2020-01-10 12:08:28');
+(4, '1201820', 1, 'Pelpaor', 'Surat Tanah', '2020-01-27 17:50:59', '2020-01-27 17:50:59'),
+(5, '1201820', 2, 'Cinta', 'Kepalan Jantung', '2020-01-27 17:50:59', '2020-01-27 17:50:59'),
+(6, '1201820', 1, 'Bunda', 'KK di hilangkan bunda', '2020-01-27 17:50:59', '2020-01-27 17:50:59'),
+(7, '1201820', 2, 'Mereka', 'Kepercayaan', '2020-01-27 17:50:59', '2020-01-27 17:50:59'),
+(8, '038302', 1, 'Ndk tahu', 'seperti tulang', '2020-01-27 17:53:34', '2020-01-27 17:53:34'),
+(9, '038302', 2, 'Nadin Amizah', 'Kepercayaan', '2020-01-27 17:53:34', '2020-01-27 17:53:34'),
+(10, '038302', 2, 'Raisa', 'suara', '2020-01-27 17:53:34', '2020-01-27 17:53:34'),
+(11, '038302', 2, 'anya', 'otak', '2020-01-27 17:53:35', '2020-01-27 17:53:35'),
+(12, '038302', 1, 'pelapor', 'surat hanyut', '2020-01-27 17:53:35', '2020-01-27 17:53:35');
 
 -- --------------------------------------------------------
 
@@ -54,8 +62,22 @@ INSERT INTO `detail_laporan` (`detail_laporan_id`, `laporan_no`, `jenis_id`, `na
 CREATE TABLE `doc_pendukung` (
   `doc_pendukung_id` int(11) NOT NULL,
   `doc_pendukung_nama` varchar(191) NOT NULL,
-  `doc_pendukung_file` varchar(191) NOT NULL
+  `doc_pendukung_file` varchar(191) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `doc_pendukung`
+--
+
+INSERT INTO `doc_pendukung` (`doc_pendukung_id`, `doc_pendukung_nama`, `doc_pendukung_file`, `created_at`, `updated_at`) VALUES
+(10, 'BMTHl', '20150927071731.jpg', '2020-01-24 16:31:32', '2020-01-24 16:31:32'),
+(11, 'BMTHl', '20150927071731.jpg', '2020-01-24 16:32:27', '2020-01-24 16:32:27'),
+(12, 'BMTH', '5454428-bring-me-the-horizon-wallpaper.jpg', '2020-01-25 08:37:04', '2020-01-25 08:37:04'),
+(13, 'BMTHl', '5454428-bring-me-the-horizon-wallpaper.jpg', '2020-01-25 08:58:06', '2020-01-25 08:58:06'),
+(14, 'Unic', 'bmth.jpg', '2020-01-27 17:50:59', '2020-01-27 17:50:59'),
+(15, 'Bermuda Merah', 'black_3d_pyramid_glow_red____by_cytherina-d5gzbe0.jpg', '2020-01-27 17:53:34', '2020-01-27 17:53:34');
 
 -- --------------------------------------------------------
 
@@ -90,6 +112,7 @@ CREATE TABLE `laporan` (
   `laporan_tglhilang` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `laporan_lokasi` varchar(50) NOT NULL,
   `laporan_keterangan` longtext NOT NULL,
+  `doc_pendukung_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -98,8 +121,9 @@ CREATE TABLE `laporan` (
 -- Dumping data untuk tabel `laporan`
 --
 
-INSERT INTO `laporan` (`laporan_no`, `user_nrp`, `pelapor_nik`, `laporan_tgllapor`, `laporan_tglhilang`, `laporan_lokasi`, `laporan_keterangan`, `created_at`, `updated_at`) VALUES
-('12', '1611523005', '161152349032092308', '2020-01-10 12:08:28', '2020-01-11 17:00:00', 'Padang', 'Ini terjadi', '2020-01-10 12:08:28', '2020-01-10 12:08:28');
+INSERT INTO `laporan` (`laporan_no`, `user_nrp`, `pelapor_nik`, `laporan_tgllapor`, `laporan_tglhilang`, `laporan_lokasi`, `laporan_keterangan`, `doc_pendukung_id`, `created_at`, `updated_at`) VALUES
+('038302', '1611523005', '200929182', '2020-01-27 17:53:34', '2019-11-30 17:00:00', 'Unand Jaya', 'DIculik', 15, '2020-01-27 17:53:34', '2020-01-27 17:53:34'),
+('1201820', '1611523005', '1001231231', '2020-01-27 17:50:59', '2020-01-08 17:00:00', 'Padang', 'Hilang Begitu Saja bung', 14, '2020-01-27 17:50:59', '2020-01-27 17:50:59');
 
 -- --------------------------------------------------------
 
@@ -116,7 +140,6 @@ CREATE TABLE `pelapor` (
   `pelapor_pekerjaan` varchar(50) NOT NULL,
   `pelapor_notelp` varchar(20) DEFAULT NULL,
   `pelapor_suku` varchar(20) DEFAULT NULL,
-  `doc_pendukung_id` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -125,8 +148,9 @@ CREATE TABLE `pelapor` (
 -- Dumping data untuk tabel `pelapor`
 --
 
-INSERT INTO `pelapor` (`pelapor_nik`, `pelapor_nama`, `pelapor_tgl_lahir`, `pelapor_jekel`, `pelapor_alamat`, `pelapor_pekerjaan`, `pelapor_notelp`, `pelapor_suku`, `doc_pendukung_id`, `created_at`, `updated_at`) VALUES
-('161152349032092308', 'Muhama Febri Algani', '1998-02-10', 'Laki-Laki', 'Aspol alai blok D no 10', 'Mahasiswa', '085374556747', 'Minang', NULL, '2020-01-10 01:38:52', '2020-01-10 01:38:52');
+INSERT INTO `pelapor` (`pelapor_nik`, `pelapor_nama`, `pelapor_tgl_lahir`, `pelapor_jekel`, `pelapor_alamat`, `pelapor_pekerjaan`, `pelapor_notelp`, `pelapor_suku`, `created_at`, `updated_at`) VALUES
+('1001231231', 'Rekto', '1999-11-18', 'Laki-Laki', 'Jekade', 'Musisi', '123098120389', 'Sunda', '2020-01-27 17:48:41', '2020-01-27 17:48:41'),
+('200929182', 'Harimaupura Martabal', '1989-06-21', 'Perempuan', 'Medan utara', 'Ninja Saga', '0808080808080', 'Batak', '2020-01-23 17:47:49', '2020-01-23 19:07:22');
 
 -- --------------------------------------------------------
 
@@ -201,14 +225,14 @@ ALTER TABLE `jenis`
 ALTER TABLE `laporan`
   ADD PRIMARY KEY (`laporan_no`),
   ADD KEY `user_nrp` (`user_nrp`),
-  ADD KEY `pelapor_nik` (`pelapor_nik`);
+  ADD KEY `pelapor_nik` (`pelapor_nik`),
+  ADD KEY `doc_pendukung_id` (`doc_pendukung_id`);
 
 --
 -- Indeks untuk tabel `pelapor`
 --
 ALTER TABLE `pelapor`
-  ADD PRIMARY KEY (`pelapor_nik`),
-  ADD KEY `FOREIGN` (`doc_pendukung_id`) USING BTREE;
+  ADD PRIMARY KEY (`pelapor_nik`);
 
 --
 -- Indeks untuk tabel `role`
@@ -231,13 +255,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `detail_laporan`
 --
 ALTER TABLE `detail_laporan`
-  MODIFY `detail_laporan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `detail_laporan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `doc_pendukung`
 --
 ALTER TABLE `doc_pendukung`
-  MODIFY `doc_pendukung_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `doc_pendukung_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis`
@@ -267,13 +291,8 @@ ALTER TABLE `detail_laporan`
 --
 ALTER TABLE `laporan`
   ADD CONSTRAINT `laporan_ibfk_1` FOREIGN KEY (`user_nrp`) REFERENCES `user` (`user_nrp`),
-  ADD CONSTRAINT `laporan_ibfk_2` FOREIGN KEY (`pelapor_nik`) REFERENCES `pelapor` (`pelapor_nik`);
-
---
--- Ketidakleluasaan untuk tabel `pelapor`
---
-ALTER TABLE `pelapor`
-  ADD CONSTRAINT `FOREIGN` FOREIGN KEY (`doc_pendukung_id`) REFERENCES `doc_pendukung` (`doc_pendukung_id`);
+  ADD CONSTRAINT `laporan_ibfk_2` FOREIGN KEY (`pelapor_nik`) REFERENCES `pelapor` (`pelapor_nik`),
+  ADD CONSTRAINT `laporan_ibfk_3` FOREIGN KEY (`doc_pendukung_id`) REFERENCES `doc_pendukung` (`doc_pendukung_id`);
 
 --
 -- Ketidakleluasaan untuk tabel `user`

@@ -23,8 +23,14 @@ class Laporan extends Model
     }
 
     public function doc_pendukung() {
-        return $this->hasOne('App\DocPendukung', 'doc_pendukung_id', 'doc_pendukung_id');
+        return $this->belongsTo('App\DocPendukung', 'doc_pendukung_id', 'doc_pendukung_id');
     }
 
+
+
+    public function jenis()
+    {
+        return $this->belongsToMany('App\Jenis','detail_laporan','laporan_no','jenis_id');
+    }
 
 }

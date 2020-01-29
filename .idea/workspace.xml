@@ -2,15 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4690f70e-52b7-42aa-b7d9-270bc978483e.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/app/Exports/LaporanExport.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/resources/views/excel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/LoginTester.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LoginTester.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/DetailLaporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DetailLaporan.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/DocPendukung.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DocPendukung.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/PelaporController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Jenis.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Jenis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Pelapor.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Pelapor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/build/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/config/app.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolapelapor.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpelaporan.sql" beforeDir="false" afterPath="$PROJECT_DIR$/simpelaporan.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +189,10 @@
       <path value="$PROJECT_DIR$/build/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/build/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/build/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/build/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/build/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/build/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/build/vendor/markbaker/matrix" />
     </include_path>
   </component>
   <component name="ProjectId" id="1VfA2rwFMAKYQMd0yfJTcPG9IUb" />
@@ -186,7 +205,7 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Perpustakaan" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/eplanning_dev" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
@@ -241,7 +260,10 @@
       <workItem from="1578611112637" duration="29146000" />
       <workItem from="1578986459342" duration="3763000" />
       <workItem from="1579354635357" duration="12781000" />
-      <workItem from="1579709400887" duration="22960000" />
+      <workItem from="1579709400887" duration="23049000" />
+      <workItem from="1579940770053" duration="31337000" />
+      <workItem from="1580142918886" duration="26345000" />
+      <workItem from="1580301282116" duration="4926000" />
     </task>
     <servers />
   </component>
@@ -249,10 +271,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="28" key="#Inspections" timestamp="1577696439115">
+    <state x="275" y="28" key="#Inspections" timestamp="1579978727495">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1577696439115" />
+    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1579978727495" />
     <state x="275" y="28" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577640962985">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -265,14 +287,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1577640537689" />
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1578560801098">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580213559646">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1578560801098" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1579868128372">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1580213559646" />
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1580219499127">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1579868128372" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580219499127" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -289,13 +311,17 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="553" y="109" width="264" height="520" key="com.intellij.database.view.ui.DbObjectDialog/0.0.1366.738@0.0.1366.738" timestamp="1578181524780" />
+    <state x="-8" y="116" width="1322" height="715" key="dock-window-1" timestamp="1580217115799">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="-8" y="116" width="1322" height="715" key="dock-window-1/0.0.1366.738@0.0.1366.738" timestamp="1580217115799" />
     <state x="339" y="165" key="run.anything.popup" timestamp="1578310165797">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578310165797" />
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1578562120974">
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1580305272393">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1578562120974" />
+    <state x="4" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1580305272393" />
   </component>
 </project>

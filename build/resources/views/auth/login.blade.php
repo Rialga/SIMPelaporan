@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
-    <link rel="icon" type="image/png" href="Assetlogin/images/icons/favicon.ico"/>
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/logo/polri-favicon.png') }}"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="Assetlogin/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -34,9 +34,13 @@
         <div class="wrap-login100" style="background: #ffffff">
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                 @csrf
+                <span class="login100-form-title">
+						  <img src="{{ asset('assets/images/logo/polri-logo-fold.png') }}" alt="logo">
+                </span>
+
                 <span class="login100-form-title p-b-26">
-						Welcome
-					</span>
+                            Welcome
+                </span>
 
                 <div class="wrap-input100 validate-input" >
                     <input class="input100" type="text" name="login" id="login">

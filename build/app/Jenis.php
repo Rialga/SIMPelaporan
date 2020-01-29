@@ -11,4 +11,10 @@ class Jenis extends Model
     protected $fillable = [
         'jenis_nama'
     ];
+
+    public function laporan()
+    {
+        return $this->belongsToMany('App\Laporan','detail_laporan','jenis_id','laporan_no');
+    }
+
 }

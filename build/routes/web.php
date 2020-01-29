@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('login');
 });
 
 Auth::routes();
@@ -55,17 +55,24 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
 
     Route::group(['prefix' => 'kelolalaporan'], function () {
         Route::get('/', function() { return view('kelolalaporan'); });
-
-        Route::get('addlaporan/{id}', 'KelolalaporanController@addlaporan');
-        Route::get('listjenis', 'KelolalaporanController@listjenis');
-
-        Route::get('data', 'KelolalaporanController@data');
         Route::post('create', 'KelolalaporanController@create');
         Route::post('update/{id}', 'KelolalaporanController@update');
         Route::get('delete/{id}', 'KelolalaporanController@delete');
+        Route::get('data', 'KelolalaporanController@data');
+        Route::get('listjenis', 'KelolalaporanController@listjenis');
+
+        Route::get('addlaporan/{id}', 'KelolalaporanController@addlaporan');
 
         Route::get('print/{id}', 'KelolalaporanController@print');
+        Route::get('excel', 'KelolalaporanController@excel');
+        Route::get('exportexcel', 'KelolalaporanController@excelexport');
 
+    });
+
+
+    Route::group(['prefix' => 'downloadlaporan'], function () {
+        Route::get('/', 'DownloadLaporanController@view');
+        Route::get('data', 'DownloadLaporanController@data');
     });
 
 

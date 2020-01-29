@@ -65,4 +65,10 @@ class User extends Authenticatable
     {
         return (strtolower($role)==strtolower($this->have_role->role_name)) ? true : false;
     }
+
+
+    public function laporan(){
+        return $this->hasMany('App\Laporan');
+    }
+
 }

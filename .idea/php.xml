@@ -80,6 +80,10 @@
       <path value="$PROJECT_DIR$/build/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/build/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/build/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/build/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/build/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/build/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/build/vendor/markbaker/matrix" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

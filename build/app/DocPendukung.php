@@ -12,4 +12,9 @@ class DocPendukung extends Model
     protected $fillable = [
         'doc_pendukung_file' , 'doc_pendukung_nama'
     ];
+
+    public function laporan(){
+        return $this->hasMany('App\Laporan','doc_pendukung_id','doc_pendukung_id');
+    }
+
 }

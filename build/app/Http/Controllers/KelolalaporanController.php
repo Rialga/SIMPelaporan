@@ -11,7 +11,8 @@ use Illuminate\Http\Request;
 use App\Pelapor;
 use DateTime;
 use DataTables;
-
+use Excel;
+use App\Exports\LaporanExport;
 class KelolalaporanController extends Controller
 {
     public function addlaporan($id)
@@ -42,12 +43,12 @@ class KelolalaporanController extends Controller
         $upload->save();
 
 
-        $now = new DateTime();
+        $waktu = Carbon::now();
 
         $laporan = new Laporan;
         $laporan->pelapor_nik = $request->pelapor_nik;
         $laporan->laporan_no = $request->laporan_no;
-        $laporan->laporan_tgllapor = $now;
+        $laporan->laporan_tgllapor = $waktu->toDateTimeString();
         $laporan->user_nrp = $request->user_nrp;
         $laporan->doc_pendukung_id  = DocPendukung::all()->last()->doc_pendukung_id;
         $laporan->pelapor_nik = $request->pelapor_nik;
@@ -74,7 +75,10 @@ class KelolalaporanController extends Controller
 
     public function data()
     {
-        $detail_laporan = DetailLaporan::with(['laporan','jenis'])->get();
+
+
+        $detail_laporan = Laporan::with(['pelapor'])->get();
+
         return DataTables::of($detail_laporan)->toJson();
     }
 
@@ -99,5 +103,15 @@ class KelolalaporanController extends Controller
                                         'tglhilang'=>$tglhilang,
                                         'jamlapor'=>$jamlapor,
                                         'dayhilang'=>$dayhilang]);
+    }
+
+    public function excel(){
+        $data = Laporan::all();
+        return view('excel' ,['data'=>$data]);
+    }
+
+    public function excelexport(){
+        $nama_file = 'laporan_kecelakaan'.date( 'Y-m-d_H-i-s').'.xlsx';
+        return Excel::download(new LaporanExport, $nama_file);
     }
 }

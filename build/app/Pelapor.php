@@ -14,4 +14,10 @@ class Pelapor extends Model
         'pelapor_notelp' , 'pelapor_suku'
     ];
     public $incrementing = false;
+
+
+    public function laporan(){
+        return $this->hasMany('App\Laporan','pelapor_nik','pelapor_nik');
+    }
+
 }

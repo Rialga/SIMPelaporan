@@ -9,7 +9,7 @@
     <title>Sistem Informasi Pelaporan</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/polri-favicon.png') }}">
 
     <!-- page css -->
     <link href="{{ asset('assets/vendors/datatables/dataTables.bootstrap.min.css') }}" rel="stylesheet">
@@ -30,8 +30,8 @@
         <div class="header">
             <div class="logo logo-dark">
                 <a>
-                    <img src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
-                    <img class="logo-fold" src="{{ asset('assets/images/logo/logo-fold.png') }}" alt="Logo">
+                    <img src="{{ asset('assets/images/logo/polri-logo.png') }}" alt="Logo">
+                    <img class="logo-fold" src="{{ asset('assets/images/logo/polri-logo-fold.png') }}" alt="Logo">
                 </a>
             </div>
             <div class="logo logo-white">
@@ -58,15 +58,15 @@
                 <ul class="nav-right">
                     <li class="dropdown dropdown-animated scale-left">
                         <div class="pointer" data-toggle="dropdown">
-                            <div class="avatar avatar-image  m-h-10 m-r-15">
-                                <img src="{{ asset('assets/images/avatars/thumb-3.jpg') }}"  alt="">
+                            <div class="avatar avatar-icon avatar-gold m-h-10 m-r-15">
+                                <i class="anticon anticon-user"></i>
                             </div>
                         </div>
                         <div class="p-b-15 p-t-20 dropdown-menu pop-profile">
                             <div class="p-h-20 p-b-15 m-b-10 border-bottom">
                                 <div class="d-flex m-r-50">
-                                    <div class="avatar avatar-lg avatar-image">
-                                        <img src="{{ asset('assets/images/avatars/thumb-3.jpg') }}" alt="">
+                                    <div class="avatar avatar-lg avatar-icon avatar-gold">
+                                        <i class="anticon anticon-user"></i>
                                     </div>
                                     <div class="m-l-10">
                                         <p class="m-b-0 text-dark font-weight-semibold">{{ Auth::user()->user_nama }}</p>
@@ -135,7 +135,8 @@
 <script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
 <script>
     $('.datepicker-input').datepicker({
-        format: 'yyyy/mm/dd'
+        dateformat: 'yyyy/mm/dd',
+        timeFormat: 'hh:mm:ss'
     });
 </script>
 

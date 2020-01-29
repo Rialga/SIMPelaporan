@@ -5,18 +5,29 @@
 
  <div class="card">
 
-     <div class="card-body">
-         <table id="tlaporan" class="table">
-             <thead>
-             <tr>
-                 <th>No Laporan</th>
-                 <th>NIK Pelapor</th>
-                 <th>Jenis Barang / Surat</th>
-                 <th>Aksi</th>
-             </tr>
-             </thead>
-         </table>
+
+         <div class="card-header">
+             <h4 class="card-title">
+                 <a class="btn btn-primary m-r-5" href='kelolalaporan/excel'>
+                     <i class="anticon anticon-download"></i>
+                     Excel
+                 </a>
+             </h4>
+         </div>
+
+        <div class="card-body">
+             <table id="tlaporan" class="table">
+                 <thead>
+                 <tr>
+                     <th>No Laporan</th>
+                     <th>Nama Pelapor</th>
+                     <th>Tanggal Lapor</th>
+                     <th>Aksi</th>
+                 </tr>
+                 </thead>
+             </table>
      </div>
+
  </div>
 
 @endsection
@@ -43,8 +54,8 @@
                     "ajax": "{{ url('/kelolalaporan/data') }}",
                     "columns": [
                         { "data": "laporan_no" },
-                        { "data": "laporan.pelapor_nik"},
-                        { "data": "jenis.jenis_nama"},
+                        { "data": "pelapor.pelapor_nama"},
+                        { "data": "laporan_tgllapor"},
                         {
                             data: 'detail_laporan_id',
                             sClass: 'text-center',
@@ -79,7 +90,7 @@
 
             $(document).on('click', '#print', function() {
                 var data = $('#tlaporan').DataTable().row($(this).parents('tr')).data();
-                window.location.href = '{{ url('kelolalaporan/print') }}/'+data.laporan.laporan_no ;
+                window.location.href = '{{ url('kelolalaporan/print') }}/'+data.laporan_no ;
             });
 
     });

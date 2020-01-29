@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="form-group col-md-3">
-                        <label for="laporan_tglhilang">Waktu Kejadian :</label>
+                        <label for="laporan_tglhilang">Tanggal Kejadian/Kehilangan :</label>
                         <input type="text" class="form-control datepicker-input" id="laporan_tglhilang" name="laporan_tglhilang" placeholder="yyyy-mm-dd" required>
                     </div>
 
