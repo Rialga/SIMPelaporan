@@ -2,30 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/build/app/Exports/LaporanExport.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/resources/views/excel.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/LoginTester.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/LoginTester.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/DetailLaporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DetailLaporan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/DocPendukung.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/DocPendukung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/vendors/datatables/datetime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/DownloadLaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/DownloadLaporanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Jenis.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Jenis.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Laporan.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Laporan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/Pelapor.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Pelapor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/build/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/addlaporan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/excel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/excel.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simpelaporan.sql" beforeDir="false" afterPath="$PROJECT_DIR$/simpelaporan.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +251,10 @@
       <workItem from="1579709400887" duration="23049000" />
       <workItem from="1579940770053" duration="31337000" />
       <workItem from="1580142918886" duration="26345000" />
-      <workItem from="1580301282116" duration="4926000" />
+      <workItem from="1580301282116" duration="13814000" />
+      <workItem from="1580399849647" duration="3996000" />
+      <workItem from="1580405965242" duration="1076000" />
+      <workItem from="1580430099227" duration="14962000" />
     </task>
     <servers />
   </component>
@@ -271,10 +262,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="28" key="#Inspections" timestamp="1579978727495">
+    <state x="275" y="28" key="#Inspections" timestamp="1580402747905">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1579978727495" />
+    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1580402747905" />
     <state x="275" y="28" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577640962985">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -287,14 +278,18 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1577640537689" />
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1580319009552">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738@0.0.1366.738" timestamp="1580319009552" />
     <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580213559646">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1580213559646" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1580219499127">
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1580482879680">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580219499127" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580482879680" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -315,10 +310,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="-8" y="116" width="1322" height="715" key="dock-window-1/0.0.1366.738@0.0.1366.738" timestamp="1580217115799" />
-    <state x="339" y="165" key="run.anything.popup" timestamp="1578310165797">
+    <state x="369" y="105" width="627" height="528" key="find.popup" timestamp="1580401633735">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1578310165797" />
+    <state x="369" y="105" width="627" height="528" key="find.popup/0.0.1366.738@0.0.1366.738" timestamp="1580401633735" />
+    <state x="339" y="165" key="run.anything.popup" timestamp="1580482669838">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="165" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1580482669838" />
     <state x="4" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1580305272393">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

@@ -9,7 +9,7 @@
          <div class="card-header">
              <h4 class="card-title">
                  <a class="btn btn-primary m-r-5" href='kelolalaporan/excel'>
-                     <i class="anticon anticon-download"></i>
+                         <i class="anticon anticon-download"></i>
                      Excel
                  </a>
              </h4>

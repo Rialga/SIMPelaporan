@@ -22,8 +22,11 @@ Route::get('logout', function(){
 });
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['sabara','spkt']], function () {
-    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::group(['prefix' => 'home'], function () {
+        Route::get('/', 'DashboardController@index');
     });
+});
 
 
 
@@ -73,6 +76,7 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
     Route::group(['prefix' => 'downloadlaporan'], function () {
         Route::get('/', 'DownloadLaporanController@view');
         Route::get('data', 'DownloadLaporanController@data');
+
     });
 
 

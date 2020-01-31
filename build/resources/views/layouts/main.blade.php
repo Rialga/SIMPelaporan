@@ -133,9 +133,9 @@
 <script src="{{ asset ('assets/vendors/select2/select2.min.js') }}"></script>
 <script src="{{ asset ('assets/vendors/jquery-validation/jquery.validate.min.js')}}"></script>
 <script src="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
-<script>
+<script type="text/javascript">
     $('.datepicker-input').datepicker({
-        dateformat: 'yyyy/mm/dd',
+        format: '{{ config('app.date_format_js') }}',
         timeFormat: 'hh:mm:ss'
     });
 </script>

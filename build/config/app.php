@@ -68,7 +68,7 @@ return [
     */
 
     'timezone' => 'Asia/Jakarta',
-
+    'date_format_js' => 'yyyy-mm-dd',
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration

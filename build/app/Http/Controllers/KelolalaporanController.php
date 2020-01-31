@@ -28,6 +28,8 @@ class KelolalaporanController extends Controller
 
     public function create(Request $request){
 
+        $waktu = Carbon::now();
+//        $originalDate = $request->laporan_tglhilang;
 
 
         $file = $request->file('doc_pendukung_file');
@@ -42,8 +44,6 @@ class KelolalaporanController extends Controller
         $upload->doc_pendukung_nama = $request->doc_pendukung_nama;
         $upload->save();
 
-
-        $waktu = Carbon::now();
 
         $laporan = new Laporan;
         $laporan->pelapor_nik = $request->pelapor_nik;

@@ -49,6 +49,15 @@
                     </a>
                 </li>
 
+                <li class="nav-item dropdown open">
+                    <a class="dropdown-toggle" href="{{ url('kelolalaporan/excel') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-file"></i>
+                                </span>
+                        <span class="title">Laporan III</span>
+                    </a>
+                </li>
+
            @else
                 <li class="nav-item dropdown open">
                     <a class="dropdown-toggle" href="{{ url('kelolapelapor') }}">

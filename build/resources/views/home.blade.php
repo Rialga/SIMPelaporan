@@ -14,21 +14,11 @@
                                 <i class="anticon anticon-profile"></i>
                             </div>
                             <div class="m-l-30">
-                                <h1 class="m-b-0">1,832</h1>
-                                <p class="m-b-0 text-muted">Customers</p>
+                                <h1 class="m-b-0">{{$laporan}}</h1>
+                                <p class="m-b-0 text-muted">Laporan</p>
                             </div>
                         </div>
 
-
-                        <div class="media align-items-center">
-                            <div class="avatar avatar-icon avatar-lg avatar-red">
-                                <i class="anticon anticon-profile"></i>
-                            </div>
-                            <div class="m-l-30">
-                                <h1 class="m-b-0">1,832</h1>
-                                <p class="m-b-0 text-muted">Customers</p>
-                            </div>
-                        </div>
 
                     </div>
 
@@ -41,7 +31,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>Laporan Kehilangan Pada Tahun 2019</h5>
+                            <h5>Laporan Kehilangan Pada Tahun {{$now - 1}}</h5>
                             <div>
 
                             </div>
@@ -61,7 +51,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
-                            <h5>Laporan Kehilangan Pada Tahun 2019</h5>
+                            <h5>Jumlahb Laporan Kehilangan Berdasarkan Jenis Pada Tahun {{$now - 1}}</h5>
                             <div>
 
                             </div>
@@ -82,7 +72,18 @@
     <script src="{{ asset ('assets/vendors/chartjs/Chart.min.js')}}"></script>
     <script type="text/javascript">
         var ctx = document.getElementById('line-chart').getContext('2d');
-
+        var jan = {!! json_encode($jan) !!};
+        var feb = {!! json_encode($feb) !!};
+        var mar = {!! json_encode($mar) !!};
+        var apr = {!! json_encode($apr) !!};
+        var mei = {!! json_encode($mei) !!};
+        var jun = {!! json_encode($jun) !!};
+        var jul = {!! json_encode($jul) !!};
+        var agu = {!! json_encode($agu) !!};
+        var sep = {!! json_encode($sep) !!};
+        var okt = {!! json_encode($okt) !!};
+        var nov = {!! json_encode($nov) !!};
+        var des = {!! json_encode($des) !!};
         var chart = new Chart(ctx, {
 
             type: 'line',
@@ -98,7 +99,7 @@
                     pointHoverBackgroundColor: 'rgba(35,160,234,0.94)',
                     pointHoverBorderColor: 'rgba(35,160,234,0)',
                     data: [
-                        20, 67, 54, 31, 65, 12, 1, 44, 12, 12, 90, 0
+                        jan, feb, mar, apr, mei, jun, jul, agu, sep, okt, nov, des
                     ],
                 }]
             },

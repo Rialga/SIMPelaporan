@@ -20,9 +20,22 @@ class DownloadLaporanController extends Controller
     }
 
 
-    public function data()
+    public function data(Request $request)
     {
-        $detail = Laporan::with(['pelapor'],['jenis'])->get();
-        return DataTables::of($detail)->toJson();
+        $mulai = $request->start;
+        $akhir = $request->end;
+
+        $detail = Laporan::with(['pelapor','jenis'])
+            ->whereBetween('laporan_tgllapor', [$mulai, $akhir])
+            ->get();
+
+        return DataTables::of($detail)
+            ->editColumn('laporan_tglhilang', function ($detail) {
+                return $detail->laporan_tglhilang ? with(new Carbon($detail->laporan_tglhilang))->format('d-m-Y') : '';
+            })
+            ->editColumn('laporan_tgllapor', function ($detail) {
+                return $detail->laporan_tgllapor ? with(new Carbon($detail->laporan_tgllapor))->format('d-m-Y') : '';
+            })
+            ->toJson();
     }
 }
