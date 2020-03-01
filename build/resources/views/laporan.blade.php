@@ -68,7 +68,7 @@
 
                 <font size="5" style="text-align: justify">
                     <p style="text-align: justify">
-                            ----- Yang bertanda tangan di bawah ini menerangkan pada hari Rabu tanggal {{$tgllapor}} jam {{$jamlapor}}
+                            ----- Yang bertanda tangan di bawah ini menerangkan pada hari {{$daylapor}} tanggal {{$tgllapor}} jam {{$jamlapor}}
                             Wib telah datang seorang Laki-laki / Perempuan Warga Negara Indonesia melapor ke Polsek Pauh yang mengaku
                             bernama :-------------------------------------------------------------------------------------------------------
                     </p>
@@ -148,10 +148,10 @@
                         <b> - </b>
                         </td>
                         <td width="500px">
-                            <b> {{ $data["detail_laporan_ket"] }}</b>
+                            <b> 1 (satu) buah {{ $data["detail_laporan_ket"] }}</b>
                         </td>
                         <td>
-                            <b> a.n {{ $data["nama_pemilik"] }} </b>
+                            <b> A.n {{ $data["nama_pemilik"] }} </b>
                         </td>
                     </tr>
                         @endforeach
@@ -196,13 +196,13 @@
 
                     <p style="text-align: justify">
                         Atas peristiwa tersebut kemudian Pelapor sudah berusaha untuk mencari namun belum ditemukan, kemudian
-                        melporkannya ke Polsek Pauh Padang sesuai dengan Laporan Polisi Nomor : {{$detail->laporan->laporan_no}} Sektor Pauh,
-                        tanggal : {{ $tglhilang }}. ----------------------------------------------------------------------
+                        melporkannya ke Polsek Pauh Padang sesuai dengan Laporan Polisi Nomor : {{$detail->laporan->laporan_no}}/ Sektor
+                        Pauh, tanggal : {{ $tglhilang }}. ------------------------------------------------------------------------------
                     </p>
                     <p style="text-align: justify">
                         ----- Demikianlah surat tanda penerimaan laporan / pengaduan yang kehilangan barang - barang surat – surat
                         berharga ini dibuat, bukan sebagai pangganti surat yang hilang, namun dipergunakan sebagai syarat dalam
-                        pengurusan ke instansi yang bersangkutan.------------------------------------------------------------------------
+                        pengurusan ke instansi yang bersangkutan.-----------------------------------------------------------------------------
                     </p>
                 </font>
             </td>
@@ -230,7 +230,7 @@
                                 <br><br><br><br><br>
                                 <b>{{ Auth::user()->user_nama }}</b> <br>
                                 <b>____________________</b><br>
-                                <b>{{ Auth::user()->user_pangkat }} {{ Auth::user()->user_nrp }}</b>
+                                <b>{{ Auth::user()->pangkat->pangkat_name }} NRP {{ Auth::user()->user_nrp }}</b>
                             </td>
                         </tr>
                     </table>

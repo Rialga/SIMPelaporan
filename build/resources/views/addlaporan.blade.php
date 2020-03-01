@@ -1,9 +1,68 @@
 @extends('layouts.main')
-@extends('layouts.sidebar')
+<div class="side-nav">
+    <div class="side-nav-inner">
+        <ul class="side-nav-menu scrollable">
+
+            <div class="m-t-20 text-center">
+                <div class="avatar avatar-image" style="height: 100px; width: 100px;">
+                    <img src="../../assets/images/avatars/thumb-1.jpg" alt="">
+                </div>
+                <h4 class="m-t-30"> {{Auth::user()->user_nama}}  </h4>
+                <p>{{Auth::user()->user_nrp}}</p>
+            </div>
+
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{ url('home') }}">
+                                <span class="icon-holder">
+                                    <i class="fas fa-home"></i>
+                                </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{ url('kelolapelapor') }}">
+                            <span class="icon-holder">
+                                <i class="anticon anticon-team"></i>
+                            </span>
+                    <span class="title">Data Pelapor</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{ url('kelolajenis') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-sort-ascending"></i>
+                                </span>
+                    <span class="title">Kelola Jenis Kehilangan</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{ url('kelolalaporan') }}">
+                            <span class="icon-holder">
+                                <i class="anticon anticon-download"></i>
+                            </span>
+                    <span class="title">Kelola Laporan</span>
+                </a>
+            </li>
+
+            <li class="nav-item dropdown open">
+                <a class="dropdown-toggle" href="{{ url('statistik') }}">
+                                <span class="icon-holder">
+                                    <i class="anticon anticon-team"></i>
+                                </span>
+                    <span class="title">Statistik</span>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
 
 @section('content')
 
-    <div class="card">"
+    <div class="card">
         <div class="card-header">
            <h4> Form Laporan Kehilangan</h4>
            <h4>--------------------------</h4>
@@ -34,7 +93,7 @@
 
                     <div class="form-group col-md-6">
                         <label for="laproan_no">Nomor Laporan</label>
-                        <input type="text" class="form-control" id="laporan_no" name="laporan_no" placeholder="nomor laporan" required>
+                    <input type="text" class="form-control" id="laporan_no" name="laporan_no" placeholder="nomor laporan" value={{$surat}} required>
                     </div>
 
                     <div class="form-group col-md-3">
@@ -53,7 +112,7 @@
                     </div>
 
                     <div class="form-group col-md-3">
-                        <input type="file" class="custom-file-input" id="doc_pendukung_file" name="doc_pendukung_file" required>
+                        <input type="file" class="custom-file-input" id="doc_pendukung_file" name="doc_pendukung_file[]" multiple required>
                         <label class="custom-file-label" for="doc_pendukung_file">Choose file</label>
                     </div>
 

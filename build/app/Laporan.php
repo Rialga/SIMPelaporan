@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Laporan extends Model
 {
     protected $table = 'laporan';
-    protected $primaryKey = 'laporan_no';
+    protected $primaryKey = 'id';
     protected $fillable = [
         'laporan_no','user_nrp' , 'pelapor_nik' , 'laporan_tgllapor' ,'laporan_tglhilang',
-        'laporan_lokasi' , 'laporan_keterangan', 'doc_pendukung,id'
+        'laporan_lokasi' , 'laporan_keterangan'
     ];
     public $incrementing = false;
 
@@ -23,14 +23,12 @@ class Laporan extends Model
     }
 
     public function doc_pendukung() {
-        return $this->belongsTo('App\DocPendukung', 'doc_pendukung_id', 'doc_pendukung_id');
+        return $this->belongsTo('App\DocPendukung', 'id', 'laporan_id');
     }
-
-
 
     public function jenis()
     {
-        return $this->belongsToMany('App\Jenis','detail_laporan','laporan_no','jenis_id');
+        return $this->belongsToMany('App\Jenis','detail_laporan','laporan_id','jenis_id');
     }
 
 }

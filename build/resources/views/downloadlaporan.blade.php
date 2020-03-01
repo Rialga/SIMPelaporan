@@ -10,24 +10,16 @@
             <div class="form-row">
 
                 <div class="form-group col-md-6">
-                    <label> Masukkan Tanggal :</label>
-                    <form id="cari" >
-                        {{ csrf_field() }}
+                    <label> Masukkan Tanggal (Waktu Melaporkan):</label>
+
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control datepicker-input" id="start"  name="start" placeholder="Awal">
+                            <input type="text" class="form-control datepicker-input" id="mulai"  name="mulai" placeholder="Awal">
                             <span class="p-h-10">dan</span>
-                            <input type="text" class="form-control datepicker-input" id="end" name="end" placeholder="Akhir">
+                            <input type="text" class="form-control datepicker-input" id="akhir" name="akhir" placeholder="Akhir">
                             <span class="p-h-10"></span>
                             <button id="btncari" type="submit" class="btn btn-primary">Cari</button>
                         </div>
-                    </form>
-                </div>
 
-                <div class="form-group col-md-6">
-                    <a style="position: absolute; right: 0;" class="btn btn-primary m-r-5" href='{{ url('kelolalaporan/exportexcel') }}'>
-                        <i class="anticon anticon-download"></i>
-                        Excel
-                    </a>
                 </div>
 
             </div>
@@ -38,7 +30,6 @@
         <table id="tdownload" class="table">
             <thead>
                 <tr>
-                    <th>NO</th>
                     <th>LAPORAN POLISI</th>
                     <th>WAKTU HILANG</th>
                     <th>WAKTU MELAPORKAN</th>
@@ -53,110 +44,118 @@
 </div>
 @endsection
 @section('js')
-    <script src="assets/vendors/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
+<script src="assets/vendors/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/vendors/datatables/dataTables.buttons.min.js"></script>
+<script src="assets/vendors/datatables/jszip.min.js"></script>
+<script src="assets/vendors/datatables/buttons.html5.min.js"></script>
+<script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
+<script src="assets/vendors/datatables/buttons.print.min.js"></script>
+<script src="assets/vendors/datatables/pdfmake.min.js"></script>
+<script src="assets/vendors/datatables/vfs_fonts.js"></script>
+
 
 
     <script type="text/javascript">
 
-        $(document).ready(function() {
+
             $.extend( $.fn.dataTable.defaults, {
+                autoWidth: false,
                 responsive: true,
-                autoWidth: true,
                 language: {
                     search: '<span>Cari:</span> _INPUT_',
                     searchPlaceholder: 'Cari...',
+                    lengthMenu: '<span>Tampil:</span> _MENU_',
                     paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
                 }
             });
 
-            function loadData() {
-                var no = 1;
-                var t = $('#tdownload').dataTable({
-                    "ajax": "{{ url('/downloadlaporan/data') }}",
-                    "columns": [
+            loadData();
 
-                        { "data": "laporan_no" },
-                        { "data": "laporan_no" },
-                        { "data": "laporan_tglhilang"},
-                        { "data": "laporan_tgllapor"},
-                        { "data": "laporan_lokasi"},
-                        { "data": function (data) {
-                            return '<b> A.N :</b> '+data.pelapor.pelapor_nama+' <br/>'+
-                                   '<b> Alamat :</b>'+data.pelapor.pelapor_alamat+' <br/>'+
-                                   '<b> Pekerjaan :</b>'+data.pelapor.pelapor_pekerjaan+' <br/>'+
-                                   '<b> Usia :</b>'+data.pelapor.pelapor_tgl_lahir+'';
-                        }},
-                        { "data": "jenis"}
-                    ],
+                function loadData(mulai = '', akhir = '') {
 
-                    columnDefs: [
-                        {
-                            width: "10px", targets: [0],
-                            render: function (data) {
-                                return no++;
-                            }
+                    $('#tdownload').dataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'excel','pdf'
+                        ],
 
-                        } ,
-                        {
-                            width: "100px", targets: [1]
-
-                        } ,
-                        {
-                            width: "100px", targets: [2]
-
-                        } ,
-                        {
-                            width: "100px", targets: [3]
+                        ajax: {
+                            url: "{{ url('/downloadlaporan/data') }}",
+                            data:{mulai:mulai, akhir:akhir}
                         },
-                        {
-                            width: "200px", targets: [4]
-                        },
-                        {
-                            width: "250px", targets: [5]
-                        },
-                        {
-                            width: "300px", targets: [6],
-                            render: function (data, type, full, meta) {
-                                var hasil = '';
-                                data.forEach((item, id)=>{
-                                    hasil += '- '+item.jenis_nama+'<br> ';
-                                });
-                                return hasil;
-                            }
-                        },
-                    ],
 
-                    scrollX: true,
-                    scrollY: "375",
-                    scrollCollapse: true,
-                    paging: false,
-                    info: false,
-                });
-            } loadData();
+                        columns: [
+                            { "data": "laporan_no" },
+                            { "data": "laporan_tglhilang"},
+                            { "data": "laporan_tgllapor"},
+                            { "data": "laporan_lokasi"},
+                            { "data": function (data) {
+                                return '<b> A.N :</b> '+data.pelapor.pelapor_nama+' <br/>'+
+                                       '<b> Alamat :</b>'+data.pelapor.pelapor_alamat+' <br/>'+
+                                       '<b> Pekerjaan :</b>'+data.pelapor.pelapor_pekerjaan+' <br/>'+
+                                       '<b> Usia :</b>'+data.pelapor.pelapor_tgl_lahir+'';
+                            }},
+                            { "data": "jenis"}
+                        ],
 
+                        columnDefs: [
+                            {
+                                width: "150px", targets: [0]
 
+                            } ,
+                            {
+                                width: "100px", targets: [1]
 
-            $('#btncari').click(function () {
-                $('#formpelapor').submit(function(e)     {
-                    e.preventDefault();
-                    $.ajax({
-                        url: "{{ url('/downloadlaporan/data') }}",
-                        type: 'post',
-                        data: {
-                            'start': $('#start').val(),
-                            'end': $('#end').val(),
-                        },
-                        success :function () {
-                            loadData();
-                        }
+                            } ,
+                            {
+                                width: "100px", targets: [2]
+                            },
+                            {
+                                width: "200px", targets: [3]
+                            },
+                            {
+                                width: "250px", targets: [4]
+                            },
+                            {
+                                width: "300px", targets: [5],
+                                render: function (data, type, full, meta) {
+                                    var hasil = '';
+                                    data.forEach((item, id)=>{
+                                        hasil += '- '+item.jenis_nama+'<br> ';
+                                    });
+                                    return hasil;
+                                }
+                            },
+                        ],
+
+                        scrollX: true,
+                        scrollY: "375",
+                        scrollCollapse: true,
+                        paging: false,
+                        info: false,
                     });
-                });
+                }
+
+
+            $('#btncari').click(function(){
+                var mulai = $('#mulai').val();
+                var akhir = $('#akhir').val();
+                if(mulai != '' &&  akhir != '')
+                {
+                    $('#tdownload').DataTable().destroy();
+                    loadData(mulai, akhir);
+                }
+                else
+                {
+                    alert('Isi kedua fild');
+                }
             });
 
-            {{--$(document).on('click', '#addpelapor').attr('{{ url('kelolapelapor/create') }}');--}}
 
-        });
+
+
+
+
     </script>
 
 

@@ -21,16 +21,9 @@ Route::get('logout', function(){
     return redirect('login');
 });
 
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['sabara','spkt']], function () {
-
-    Route::group(['prefix' => 'home'], function () {
-        Route::get('/', 'DashboardController@index');
-    });
-});
 
 
-
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt']], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['superadmin']], function () {
 
         Route::group(['prefix' => 'kelolauser'], function () {
             Route::get('/', function() { return view('kelolauser'); });
@@ -41,10 +34,12 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt']], function 
             Route::get('listrole', 'UserController@listrole');
 
         });
+
+
 });
 
 
-Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['superadmin','spkt']], function () {
 
     Route::group(['prefix' => 'kelolapelapor'], function () {
         Route::get('/', function() { return view('kelolapelapor'); });
@@ -56,6 +51,27 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
 
     });
 
+    Route::group(['prefix' => 'kelolajenis'], function () {
+        Route::get('/', function() { return view('kelolajenis'); });
+        Route::get('data', 'KelolajenisController@data');
+        Route::post('create', 'KelolajenisController@create');
+        Route::post('update/{id}', 'KelolajenisController@update');
+        Route::get('delete/{id}', 'KelolajenisController@delete');
+
+    });
+
+});
+
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['superadmin','spkt','sabara']], function () {
+
+    Route::group(['prefix' => 'home'], function () {
+        Route::get('/', 'DashboardController@index');
+    });
+
+    Route::group(['prefix' => 'statistik'], function () {
+        Route::get('/', 'StatistikController@index');
+    });
+
     Route::group(['prefix' => 'kelolalaporan'], function () {
         Route::get('/', function() { return view('kelolalaporan'); });
         Route::post('create', 'KelolalaporanController@create');
@@ -63,12 +79,18 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
         Route::get('delete/{id}', 'KelolalaporanController@delete');
         Route::get('data', 'KelolalaporanController@data');
         Route::get('listjenis', 'KelolalaporanController@listjenis');
-
         Route::get('addlaporan/{id}', 'KelolalaporanController@addlaporan');
-
         Route::get('print/{id}', 'KelolalaporanController@print');
-        Route::get('excel', 'KelolalaporanController@excel');
-        Route::get('exportexcel', 'KelolalaporanController@excelexport');
+
+    });
+
+    Route::group(['prefix' => 'kelolapelapor'], function () {
+        Route::get('/', function() { return view('kelolapelapor'); });
+        Route::get('data', 'PelaporController@data');
+        Route::post('create', 'PelaporController@create');
+        Route::post('update/{id}', 'PelaporController@update');
+        Route::get('delete/{id}', 'PelaporController@delete');
+        Route::get('listrole', 'PelaporController@listrole');
 
     });
 
@@ -79,8 +101,25 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['spkt','sabara']], 
 
     });
 
+    Route::group(['prefix' => 'data'], function () {
+        Route::get('line', 'StatistikController@getMonthlyPostData');
+        Route::get('jenis', 'StatistikController@alljenis');
+
+    });
+
+    Route::group(['prefix' => 'kelolajenis'], function () {
+        Route::get('/', function() { return view('kelolajenis'); });
+        Route::get('data', 'KelolajenisController@data');
+        Route::post('create', 'KelolajenisController@create');
+        Route::post('update/{id}', 'KelolajenisController@update');
+        Route::get('delete/{id}', 'KelolajenisController@delete');
+
+    });
 
 });
+
+
+
 
 
 Route::group(['prefix' => 'user'], function () {
@@ -89,6 +128,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('update/{id}', 'UserController@update');
     Route::post('delete/{id}', 'UserController@delete');
     Route::get('listrole', 'UserController@listrole');
+    Route::get('listpangkat', 'UserController@listpangkat');
 
 });
 

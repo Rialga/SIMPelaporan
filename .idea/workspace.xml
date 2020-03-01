@@ -2,18 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e4735f7c-24de-4f5e-a31d-a30209a1f8d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/build/resources/views/statistik.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/vendors/datatables/datetime.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/DownloadLaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/DownloadLaporanController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/KelolalaporanController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/downloadlaporan.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/views/excel.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/excel.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/excel.blade.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolalaporan.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/kelolauser.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/main.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/views/layouts/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/build/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simpelaporan.sql" beforeDir="false" afterPath="$PROJECT_DIR$/simpelaporan.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,20 +198,20 @@
     <property name="DatabaseDriversLRU" value="mysql&#10;mariadb&#10;postgresql" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ALD/eplanning_dev" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views\auth" />
-      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app" />
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Http" />
       <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\LoginTester\build\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views\auth" />
+      <recent name="D:\Lokasi Install\xampp\htdocs\Laravel\SIPelaporan\build\resources\views" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -255,6 +260,13 @@
       <workItem from="1580399849647" duration="3996000" />
       <workItem from="1580405965242" duration="1076000" />
       <workItem from="1580430099227" duration="14962000" />
+      <workItem from="1580483372345" duration="23829000" />
+      <workItem from="1580814248852" duration="84000" />
+      <workItem from="1580916524316" duration="594000" />
+      <workItem from="1581236379549" duration="766000" />
+      <workItem from="1581238005528" duration="44000" />
+      <workItem from="1581238075991" duration="1094000" />
+      <workItem from="1581271862150" duration="2830000" />
     </task>
     <servers />
   </component>
@@ -262,18 +274,18 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="28" key="#Inspections" timestamp="1580402747905">
+    <state x="275" y="28" key="#Inspections" timestamp="1580560488105">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1580402747905" />
+    <state x="275" y="28" key="#Inspections/0.0.1366.738@0.0.1366.738" timestamp="1580560488105" />
     <state x="275" y="28" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1577640962985">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="28" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1577640962985" />
-    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1579867279404">
+    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser" timestamp="1580559377218">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1579867279404" />
+    <state x="487" y="38" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1580559377218" />
     <state x="363" y="98" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1577640537689">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -282,14 +294,14 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="437" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.738@0.0.1366.738" timestamp="1580319009552" />
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580213559646">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580559107494">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1580213559646" />
-    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1580482879680">
+    <state x="71" y="128" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.738@0.0.1366.738" timestamp="1580559107494" />
+    <state x="805" y="128" key="FileChooserDialogImpl" timestamp="1581238038119">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1580482879680" />
+    <state x="805" y="128" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1581238038119" />
     <state x="23" y="192" key="NewPhpClassDialog" timestamp="1578078953906">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

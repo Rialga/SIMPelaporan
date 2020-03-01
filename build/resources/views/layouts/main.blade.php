@@ -17,7 +17,9 @@
     <!-- Core css -->
     <link href="{{ asset('assets/css/app.min.css') }}" rel="stylesheet">
     <!-- page css -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/sweetalert/sweetalert.css')}}">
     <link href="{{ asset('assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/vendors/datatables/buttons.dataTables.min.css') }}" rel="stylesheet">
 
 
 
@@ -58,8 +60,13 @@
                 <ul class="nav-right">
                     <li class="dropdown dropdown-animated scale-left">
                         <div class="pointer" data-toggle="dropdown">
+                            <div class="d-flex m-r-30">
                             <div class="avatar avatar-icon avatar-gold m-h-10 m-r-15">
                                 <i class="anticon anticon-user"></i>
+                            </div>
+                            <div class="m-l-10">
+                                <p class="m-b-0 text-dark font-weight-semibold">{{ Auth::user()->role->role_name }}</p>
+                            </div>
                             </div>
                         </div>
                         <div class="p-b-15 p-t-20 dropdown-menu pop-profile">
@@ -70,7 +77,7 @@
                                     </div>
                                     <div class="m-l-10">
                                         <p class="m-b-0 text-dark font-weight-semibold">{{ Auth::user()->user_nama }}</p>
-                                        <p class="m-b-0 opacity-07">{{ Auth::user()->user_pangkat }}</p>
+                                        <p class="m-b-0 opacity-07">{{ Auth::user()->pangkat->pangkat_name }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,9 +143,13 @@
 <script type="text/javascript">
     $('.datepicker-input').datepicker({
         format: '{{ config('app.date_format_js') }}',
-        timeFormat: 'hh:mm:ss'
+        timeFormat: 'hh:mm:ss',
+        autoclose:true
     });
 </script>
+
+<script src="{{ asset ('assets/vendors/sweetalert/sweetalert.min.js')}}"></script>
+@include('sweet::alert')
 
 @yield('js')
 </body>
