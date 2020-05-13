@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Laporan;
+use App\User;
+use App\Jenis;
+use App\Pelapor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -14,8 +17,18 @@ class DashboardController extends Controller
 
         //JUMLAH LAPORAN ALL
         $data = Laporan::all();
-
         $laporan = $data->count();
+
+        //Jumlah USer
+        $user = User::all()->count();
+
+        //Jumlah pelapor
+        $pelapor = Pelapor::all()->count();
+
+        //jumlah jenis laporan
+        $jenis = Jenis::all()->count();
+
+
 
         // JUMALH PER-BULAN
         $jan = $data->where('laporan_tglhilang' , 'LIKE',$now-1..'-01')->count();
@@ -30,12 +43,15 @@ class DashboardController extends Controller
         $okt = $data->where('laporan_tglhilang' , 'LIKE',$now-1..'-10')->count();
         $nov = $data->where('laporan_tglhilang' , 'LIKE',$now-1..'-11')->count();
         $des = $data->where('laporan_tglhilang' , 'LIKE',$now-1..'-12')->count();
-        
+
 
 
 
         return view('home',[
             'laporan'=>$laporan ,
+            'pelapor'=>$pelapor ,
+            'jenis'=>$jenis ,
+            'user'=>$user ,
             'now'=>$now,
             'jan'=>$jan,
             'feb'=>$feb,

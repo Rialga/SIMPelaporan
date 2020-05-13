@@ -3,6 +3,100 @@
 
 @section('content')
 
+@if(Auth::user()->role_id == 3)
+<div class="card">
+
+    {{--        TABEL USER--}}
+    <div class="card-body">
+        <table id="tpelapor" class="table">
+            <thead>
+            <tr>
+                <th>NIK</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Pekerjaan</th>
+                <th>No Telp</th>
+                <th>Detail</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+{{--        MODAL DAN FORM DETAIL USER--}}
+<div class="modal fade" id="mdpelapor">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detial Pelapor</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <i class="anticon anticon-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <table width="400">
+                                <tr>
+                                    <td>
+                                        <a class="text-gray">NIK</a>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <a class="text-gray" id="dnik"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="text-gray">Nama</a>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <a class="text-gray" id="dnama"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="text-gray">Alamat</a>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <a class="text-gray" id="dalamat"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="text-gray">Pekerjaan</a>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <a class="text-gray" id="dpekerjaan"></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a class="text-gray">Suku</a>
+                                    </td>
+                                    <td>:</td>
+                                    <td>
+                                        <a class="text-gray" id="dsuku"></a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Keluar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@else
     <div class="card">
         <div class="card-header">
             <h4 class="card-title">
@@ -46,7 +140,7 @@
                         {{ csrf_field() }}
                         <div class="form-group" id="div_nik">
                             <label for="pelapor_nik">NIK</label>
-                            <input type="number" class="form-control" id="pelapor_nik" name="pelapor_nik" placeholder="NIK">
+                            <input type="number" class="form-control" id="pelapor_nik" name="pelapor_nik" placeholder="NIK" maxlength="16">
                         </div>
 
                         <div class="form-group">
@@ -78,7 +172,15 @@
 
                         <div class="form-group ">
                                 <label for="pelapor_pekerjaan">Pekerjaan</label>
-                                <input type="text" class="form-control" id="pelapor_pekerjaan" name="pelapor_pekerjaan" placeholder="Pekerjaan">
+                                <select class="form-control" id="pelapor_pekerjaan" name="pelapor_pekerjaan">
+                                    <option value="">Pilih Jenis Pekerjaan</option>
+                                    <option>PNS</option>
+                                    <option>Wiraswasta</option>
+                                    <option>Petani</option>
+                                    <option>Nelayan</option>
+                                    <option>Buruh</option>
+                                    <option>Dan lain-lain</option>
+                                </select>
                         </div>
 
                         <div class="form-group">
@@ -177,6 +279,7 @@
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 
@@ -184,6 +287,81 @@
     <script src="assets/vendors/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendors/datatables/dataTables.bootstrap.min.js"></script>
 
+    @if(Auth::user()->role_id == 3)
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.extend( $.fn.dataTable.defaults, {
+                autoWidth: false,
+                responsive: true,
+                language: {
+                    search: '<span>Cari:</span> _INPUT_',
+                    searchPlaceholder: 'Cari...',
+                    lengthMenu: '<span>Tampil:</span> _MENU_',
+                    paginate: { 'first': 'First', 'last': 'Last', 'next': $('html').attr('dir') == 'rtl' ? '&larr;' : '&rarr;', 'previous': $('html').attr('dir') == 'rtl' ? '&rarr;' : '&larr;' }
+                }
+            });
+
+                function loadData() {
+                    $('#tpelapor').dataTable({
+                        "ajax": "{{ url('/kelolapelapor/data') }}",
+                        "columns": [
+                            { "data": "pelapor_nik" },
+                            { "data": "pelapor_nama" },
+                            { "data": "pelapor_jekel"},
+                            { "data": "pelapor_pekerjaan"},
+                            { "data": "pelapor_notelp"},
+                            {
+                                data: 'pelapor_nik',
+                                sClass: 'text-center',
+                                render: function(data) {
+                                    return'<a href="#" data-id="'+data+'" id="detail" class="text-info" title="detail"><i class="anticon anticon-eye"></i></i> </a> &nbsp;';
+                                }
+                            }
+                        ],
+                        columnDefs: [
+                            {
+                                width: "150px",
+                                targets: [0]
+                            },
+                            {
+                                width: "150px",
+                                targets: [1]
+                            },
+                            {
+                                width: "150px",
+                                targets: [2]
+                            },
+                            {
+                                width: "100px",
+                                targets: [3]
+                            },
+                            {
+                                width: "100px",
+                                targets: [4]
+                            },
+                            {
+                                width: "50px",
+                                targets: [5]
+                            },
+                        ],
+                        scrollX: true,
+                        scrollY: '350px',
+                        scrollCollapse: true,
+                    });
+                } loadData();
+
+                $(document).on('click', '#detail', function() {
+                    var data = $('#tpelapor').DataTable().row($(this).parents('tr')).data();
+                    $('#mdpelapor').modal('show');
+                    $('#dnik').text(data.pelapor_nik);
+                    $('#dnama').text(data.pelapor_nama);
+                    $('#dalamat').text(data.pelapor_alamat);
+                    $('#dpekerjaan').text(data.pelapor_pekerjaan);
+                    $('#dsuku').text(data.pelapor_suku);
+                });
+            });
+        </script>
+    @else
     <script type="text/javascript">
         $(document).ready(function() {
             $.extend( $.fn.dataTable.defaults, {
@@ -259,7 +437,6 @@
                     });
                 } loadData();
 
-
                 $(document).on('click', '#addpelapor', function() {
                     $('#mpelapor').modal('show');
                     document.getElementById('div_nik').style.display = 'block';
@@ -281,8 +458,9 @@
                             'pelapor_notelp': $('#pelapor_notelp').val(),
                             'pelapor_suku': $('#pelapor_suku').val(),
                         },
-                        success :function () {
+                        success :function (response) {
 
+                            notify(response);
                             $('#tpelapor').DataTable().destroy();
                             loadData();
                             $('#mpelapor').modal('hide');
@@ -351,6 +529,18 @@
                 });
 
 
+                function notify(response){
+                $.each(response, function(key, val) {
+                    new swal({
+                        title: 'Oops!',
+                        text: val,
+                        type: 'info'
+                    });
+                });
+
+            }
+
+
                $("#formpelapor").validate({
                    errorElement: 'label',
                    errorClass: 'is-invalid',
@@ -415,4 +605,5 @@
         });
 
     </script>
+    @endif
 @endsection

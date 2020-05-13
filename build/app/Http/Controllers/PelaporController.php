@@ -27,17 +27,29 @@ class PelaporController extends Controller
 
     public function create(Request $request){
 
-        $pelapor = new Pelapor;
-        $pelapor->pelapor_nik = $request->pelapor_nik;
-        $pelapor->pelapor_nama = $request->pelapor_nama;
-        $pelapor->pelapor_tgl_lahir = $request->pelapor_tgl_lahir;
-        $pelapor->pelapor_jekel = $request->pelapor_jekel;
-        $pelapor->pelapor_alamat = $request->pelapor_alamat;
-        $pelapor->pelapor_pekerjaan = $request->pelapor_pekerjaan;
-        $pelapor->pelapor_notelp = $request->pelapor_notelp;
-        $pelapor->pelapor_suku = $request->pelapor_suku;
+        $valid = Pelapor::where('pelapor_nik',$request->pelapor_nik)->count();
 
-        $pelapor->save();
+
+        if($valid != 0){
+
+             $message = ['error' => 'Data Pelapor Telah ada,Gagal menambahkan!'];
+             return response()->json($message);
+
+        }
+        else{
+
+            $pelapor = new Pelapor;
+            $pelapor->pelapor_nik = $request->pelapor_nik;
+            $pelapor->pelapor_nama = $request->pelapor_nama;
+            $pelapor->pelapor_tgl_lahir = $request->pelapor_tgl_lahir;
+            $pelapor->pelapor_jekel = $request->pelapor_jekel;
+            $pelapor->pelapor_alamat = $request->pelapor_alamat;
+            $pelapor->pelapor_pekerjaan = $request->pelapor_pekerjaan;
+            $pelapor->pelapor_notelp = $request->pelapor_notelp;
+            $pelapor->pelapor_suku = $request->pelapor_suku;
+
+            $pelapor->save() ;
+        }
     }
 
     public function update(Request $request,$id){

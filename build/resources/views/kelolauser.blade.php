@@ -13,7 +13,7 @@
             </h4>
         </div>
 
-{{--        TABEL USER--}}
+        {{--        TABEL USER--}}
         <div class="card-body">
             <table id="tuser" class="table">
                 <thead>
@@ -28,7 +28,7 @@
         </div>
     </div>
 
-{{--    MODAL DAN FORM DATA USER--}}
+    {{--    MODAL DAN FORM DATA USER--}}
     <div class="modal fade" id="muser">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -48,7 +48,7 @@
 
                         <div class="form-group">
                             <label for="nama">Nama</label>
-                            <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama">
+                            <input type="text"  class="form-control" id="nama" name="nama" placeholder="Nama">
                         </div>
 
                         <div class="form-row">
@@ -60,7 +60,9 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="pangkat">Pangkat</label>
-                                <input type="text" class="form-control" id="pangkat" name="pangkat" placeholder="Pangkat">
+                                <select class="form-control" id="pangkat" name="pangkat" required>
+                                    <option value=""> Pilih Pangkat </option>
+                                </select>
                             </div>
                         </div>
 
@@ -172,7 +174,7 @@
                     "ajax": "{{ url('/kelolauser/data') }}",
                     "columns": [
                         { "data": "user_nama" },
-                        { "data": "user_pangkat" },
+                        { "data": "pangkat.pangkat_name" },
                         { "data": "role.role_name"},
                         {
                             data: 'user_nrp',
@@ -224,11 +226,11 @@
                         'user_nrp': $('#nrp').val(),
                         'user_nama': $('#nama').val(),
                         'role_id': $('#role').val(),
-                        'user_pangkat': $('#pangkat').val(),
+                        'pangkat_id': $('#pangkat').val(),
                         'password': $('#password').val(),
                     },
-                    success :function () {
-
+                    success :function (response) {
+                        notify(response);
                         $('#tuser').DataTable().destroy();
                         loadData();
                         $('#muser').modal('hide');
@@ -243,7 +245,7 @@
                 document.getElementById('div_password').style.display = 'none';
                 $('#nrp').val(data.user_nrp).change();
                 $('#nama').val(data.user_nama).change();
-                $('#pangkat').val(data.user_pangkat).change();
+                $('#pangkat').val(data.pangkat_id).change();
                 $('#role').val(data.role_id).change();
                 $('#formuser').attr('action', '{{ url('kelolauser/update') }}/'+data.user_nrp);
             });
@@ -253,7 +255,7 @@
                 $('#mduser').modal('show');
                 $('#dnrp').text(data.user_nrp);
                 $('#dnama').text(data.user_nama);
-                $('#dpangkat').text(data.user_pangkat);
+                $('#dpangkat').text(data.pangkat.pangkat_name);
                 $('#drole').text(data.role.role_name);
             });
 
@@ -287,6 +289,17 @@
                 }
             });
 
+            $.ajax({
+                url: '{{ url('user/listpangkat') }}',
+                dataType: "json",
+                success: function(data) {
+                    var pangkat = jQuery.parseJSON(JSON.stringify(data));
+                    $.each(pangkat, function(k, v) {
+                        $('#pangkat').append($('<option>', {value:v.pangkat_id}).text(v.pangkat_name))
+                    })
+                }
+            });
+
 
             $('#muser').on('hidden.bs.modal', function () {
                 $(this).find('form').trigger('reset');
@@ -299,6 +312,17 @@
                 });
             });
 
+
+            function notify(response){
+                $.each(response, function(key, val) {
+                    new swal({
+                        title: 'Oops!',
+                        text: val,
+                        type: 'info'
+                    });
+                });
+
+            }
 
 
             $( "#formuser" ).validate({

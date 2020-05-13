@@ -9,16 +9,29 @@ use App\Laporan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Pelapor;
+use App\Pangkat;
 use DateTime;
-use DataTables;
+use Yajra\DataTables\DataTables;
 use Excel;
 use App\Exports\LaporanExport;
 class KelolalaporanController extends Controller
 {
     public function addlaporan($id)
     {
+        $AWAL = 'LP';
+        // karna array dimulai dari 0 maka kita tambah di awal data kosong
+        // bisa juga mulai dari "1"=>"I"
+        $bulanRomawi = array("", "I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+        $noUrutAkhir = \App\Laporan::max('id');
+        $no = 1;
+        if($noUrutAkhir) {
+            $surat =  $AWAL .'/' .sprintf("%03s", abs($noUrutAkhir + 1)). '/' . $bulanRomawi[date('n')] .'/' . date('Y');
+        }
+        else {
+            $surat = $AWAL .'/' .sprintf("%03s", $no). '/' . $bulanRomawi[date('n')] .'/' . date('Y');
+        }
         $pelapor = Pelapor::where('pelapor_nik',$id)->first();
-        return view('addlaporan',['pelapor'=>$pelapor]);
+        return view('addlaporan',['pelapor'=>$pelapor, 'surat'=>$surat]);
     }
 
     public function listjenis(){
@@ -26,40 +39,52 @@ class KelolalaporanController extends Controller
             return json_encode($jenis);
     }
 
+    public function update(Request $request,$id){
+
+        $laporan = Laporan::where('id',$id)->first();
+        $laporan->laporan_no = $request->laporan_no;
+        $laporan->laporan_lokasi = $request->laporan_lokasi;
+        $laporan->laporan_keterangan = $request->laporan_keterangan;
+        $laporan->update();
+    }
+
     public function create(Request $request){
 
         $waktu = Carbon::now();
 //        $originalDate = $request->laporan_tglhilang;
-
-
-        $file = $request->file('doc_pendukung_file');
-        $nama_file = $file->getClientOriginalName();
-
-
-        $tujuan_upload = 'DocumentLaporan';
-        $file->move($tujuan_upload,$nama_file);
-
-        $upload = new DocPendukung;
-        $upload->doc_pendukung_file = $nama_file;
-        $upload->doc_pendukung_nama = $request->doc_pendukung_nama;
-        $upload->save();
-
 
         $laporan = new Laporan;
         $laporan->pelapor_nik = $request->pelapor_nik;
         $laporan->laporan_no = $request->laporan_no;
         $laporan->laporan_tgllapor = $waktu->toDateTimeString();
         $laporan->user_nrp = $request->user_nrp;
-        $laporan->doc_pendukung_id  = DocPendukung::all()->last()->doc_pendukung_id;
         $laporan->pelapor_nik = $request->pelapor_nik;
         $laporan->laporan_tglhilang = $request->laporan_tglhilang;
         $laporan->laporan_lokasi = $request->laporan_lokasi;
         $laporan->laporan_keterangan = $request->laporan_keterangan;
         $laporan->save();
 
+        $input=$request->all();
+        $images=array();
+            if($files=$request->file('doc_pendukung_file')){
+            foreach($files as $file){
+                $nama_file=$file->getClientOriginalName();
+                $tujuan_upload = 'DocumentLaporan';
+                $file->move($tujuan_upload,$nama_file);
+                $images[]=$nama_file;
+            }
+        }
+
+        DocPendukung::insert( [
+            'laporan_id'  => Laporan::all()->last()->id,
+            'doc_pendukung_file'=>  implode("|",$images),
+            'doc_pendukung_nama' =>$input['doc_pendukung_nama'],
+            //you can put other insertion here
+        ]);
+
         for ($i = 0; $i < count($request->jenis_id); $i++) {
             $detaillaporan = new DetailLaporan;
-            $detaillaporan->laporan_no = $request->laporan_no;
+            $detaillaporan->laporan_id  = Laporan::all()->last()->id;
             $detaillaporan->jenis_id = $request->jenis_id[$i];
             $detaillaporan->nama_pemilik = $request->nama_pemilik[$i];
             $detaillaporan->detail_laporan_ket = $request->detail_laporan_ket[$i];
@@ -68,7 +93,8 @@ class KelolalaporanController extends Controller
         }
 
         $id = $request->laporan_no;
-        return $this->print($id);
+        $select = Laporan::where('laporan_no',$id)->pluck('id');
+        return $this->print($select);
 
 
     }
@@ -77,7 +103,7 @@ class KelolalaporanController extends Controller
     {
 
 
-        $detail_laporan = Laporan::with(['pelapor'])->get();
+        $detail_laporan = Laporan::with(['pelapor','doc_pendukung'])->get();
 
         return DataTables::of($detail_laporan)->toJson();
     }
@@ -85,12 +111,13 @@ class KelolalaporanController extends Controller
 
     public function print($id)
     {
-        $detail = DetailLaporan::with(['laporan'])->where('laporan_no',$id)->first();
-        $detail2 = DetailLaporan::with(['laporan'])->where('laporan_no',$id)->get();
+        $detail = DetailLaporan::with(['laporan'])->where('laporan_id',$id)->first();
+        $detail2 = DetailLaporan::with(['laporan'])->where('laporan_id',$id)->get();
         $umur = Carbon::parse($detail->laporan->pelapor->pelapor_tgl_lahir)->age;
         $tgllapor = Carbon::parse($detail->laporan->laporan_tgllapor)->format('d/m/Y');
-        $tglhilang = Carbon::parse($detail->laporan->laporan_tglhilang)->format('d/m/Y');
-        $dayhilang = Carbon::parse($detail->laporan->laporan_tglhilang)->format('D');
+        $daylapor = Carbon::parse($detail->laporan->laporan_tgllapor)->translatedFormat('l');
+        $tglhilang = Carbon::parse($detail->laporan->laporan_tglhilang)->format('d-m-Y');
+        $dayhilang = Carbon::parse($detail->laporan->laporan_tglhilang)->translatedFormat('l');
 
         $jamlapor = Carbon::parse($detail->laporan->laporan_tgllapor)->format('H:i');
 
@@ -102,16 +129,9 @@ class KelolalaporanController extends Controller
                                         'tgllapor'=>$tgllapor,
                                         'tglhilang'=>$tglhilang,
                                         'jamlapor'=>$jamlapor,
-                                        'dayhilang'=>$dayhilang]);
+                                        'dayhilang'=>$dayhilang,
+                                        'daylapor'=>$daylapor]);
     }
 
-    public function excel(){
-        $data = Laporan::all();
-        return view('excel' ,['data'=>$data]);
-    }
 
-    public function excelexport(){
-        $nama_file = 'laporan_kecelakaan'.date( 'Y-m-d_H-i-s').'.xlsx';
-        return Excel::download(new LaporanExport, $nama_file);
-    }
 }

@@ -18,7 +18,7 @@ class User extends Authenticatable
     protected $table = 'user';
     protected $primaryKey = 'user_nrp';
     protected $fillable = [
-        'user_nrp','user_nama', 'password','role_id','user_pangkat',
+        'user_nrp','user_nama', 'password','role_id','pangkat_id',
     ];
 
     /**
@@ -38,11 +38,15 @@ class User extends Authenticatable
         return $this->belongsTo('App\Role', 'role_id', 'role_id');
     }
 
+    public function pangkat() {
+        return $this->belongsTo('App\Pangkat', 'pangkat_id', 'pangkat_id');
+    }
+
     public function hasRole($roles)
     {
         $this->have_role = $this->getUserRole();
 
-        if($this->have_role->role_name == ['spkt','sabara']) {
+        if($this->have_role->role_name == ['superadmin','spkt','sabara']) {
             return true;
         }
         if(is_array($roles)){
@@ -70,5 +74,7 @@ class User extends Authenticatable
     public function laporan(){
         return $this->hasMany('App\Laporan');
     }
+
+
 
 }

@@ -9,12 +9,12 @@ class Jenis extends Model
     protected $table = 'jenis';
     protected $primaryKey = 'jenis_id';
     protected $fillable = [
-        'jenis_nama'
+        'jenis_nama',
     ];
 
     public function laporan()
     {
-        return $this->belongsToMany('App\Laporan','detail_laporan','jenis_id','laporan_no');
+        return $this->belongsToMany('App\Laporan','detail_laporan','jenis_id','id');
     }
 
 }
